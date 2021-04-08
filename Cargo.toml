@@ -10,7 +10,7 @@ path = "src/lib.rs"
 
 [dependencies]
 derive_more = "^0.99.13"
-pipe-trait = "^0.3.1"
+pipe-trait = "^0.3.2"
 serde_yaml = "^0.8.17"
 structopt = "^0.3.21"
 structopt-utilities = "^0.0.8"
