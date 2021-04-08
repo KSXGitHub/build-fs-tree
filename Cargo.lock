@@ -37,6 +37,7 @@ dependencies = [
  "serde_yaml",
  "structopt",
  "structopt-utilities",
+ "text-block-macros",
 ]
 
 [[package]]
@@ -256,6 +257,12 @@ dependencies = [
  "quote",
  "unicode-xid",
 ]
+
+[[package]]
+name = "text-block-macros"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3729d26ad7b50bf7a0efbde7312b7f18160b844a1ea5775b795ec8fe05299970"
 
 [[package]]
 name = "textwrap"

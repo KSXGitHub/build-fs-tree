@@ -21,3 +21,4 @@ features = ["derive"]
 
 [dev-dependencies]
 maplit = "^1.0.2"
+text-block-macros = "^0.1.0"

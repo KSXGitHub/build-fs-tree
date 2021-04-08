@@ -4,19 +4,20 @@ use crate::*;
 use maplit::btreemap;
 use pipe_trait::Pipe;
 use serde_yaml::{from_str, to_string, Value};
+use text_block_macros::text_block_fnl;
 
 use FileSystemTree::{Directory, File};
 
 type Tree = FileSystemTree<String, String>;
 
-const YAML: &str = concat! {
-    "---\n",
-    "a:\n",
-    "  abc: {}\n",
-    "  def: content of a/def\n",
-    "b:\n",
-    "  foo:\n",
-    "    bar: content of b/foo/bar\n",
+const YAML: &str = text_block_fnl! {
+    "---"
+    "a:"
+    "  abc: {}"
+    "  def: content of a/def"
+    "b:"
+    "  foo:"
+    "    bar: content of b/foo/bar"
 };
 
 fn tree() -> Tree {
