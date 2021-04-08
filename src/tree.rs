@@ -26,5 +26,7 @@ where
     Directory(BTreeMap<Path, Self>),
 }
 
+mod methods;
+
 #[cfg(test)]
 mod test;
