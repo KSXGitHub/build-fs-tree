@@ -1,0 +1,23 @@
+[package]
+name = "build-fs-tree"
+version = "0.0.0"
+authors = ["khai96_ <hvksmr1996@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "build_fs_tree"
+path = "src/lib.rs"
+
+[dependencies]
+derive_more = "^0.99.13"
+pipe-trait = "^0.3.1"
+serde_yaml = "^0.8.17"
+structopt = "^0.3.21"
+structopt-utilities = "^0.0.8"
+
+[dependencies.serde]
+version = "^1.0.125"
+features = ["derive"]
+
+[dev-dependencies]
+maplit = "^1.0.2"
