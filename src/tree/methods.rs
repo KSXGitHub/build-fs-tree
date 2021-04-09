@@ -33,6 +33,7 @@ where
             Some(self)
         }
     }
+
     /// Get mutable reference to the file content.
     pub fn file_content_mut(&mut self) -> Option<&'_ mut FileContent> {
         get_content!(File, self)
