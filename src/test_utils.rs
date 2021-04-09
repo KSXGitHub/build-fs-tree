@@ -8,6 +8,7 @@ use text_block_macros::text_block_fnl;
 
 use FileSystemTree::{Directory, File};
 
+/// Create a YAML representation of a sample tree.
 pub const YAML: &str = text_block_fnl! {
     "---"
     "a:"
@@ -18,6 +19,7 @@ pub const YAML: &str = text_block_fnl! {
     "    bar: content of b/foo/bar"
 };
 
+/// Create a sample tree.
 pub fn tree<Path, FileContent>() -> FileSystemTree<Path, FileContent>
 where
     Path: Ord,
