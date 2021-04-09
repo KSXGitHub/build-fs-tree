@@ -1,7 +1,6 @@
 use build_fs_tree::*;
 use maplit::btreemap;
 use mktemp::Temp;
-use pipe_trait::Pipe;
 use std::{env::set_current_dir, io::Error};
 use text_block_macros::text_block_fnl;
 
@@ -56,8 +55,10 @@ macro_rules! sample_tree {
 }
 
 /// Create a temporary folder and set it as working directory.
-pub fn temp_workspace() -> Result<(), Error> {
-    Temp::new_dir()?.pipe(set_current_dir)
+pub fn temp_workspace() -> Result<Temp, Error> {
+    let temp = Temp::new_dir()?;
+    set_current_dir(&temp)?;
+    Ok(temp)
 }
 
 mod macros;
