@@ -8,19 +8,19 @@ type Tree = FileSystemTree<String, String>;
 
 #[test]
 fn serialize() {
-    let actual: Tree = from_str(YAML).expect("parse YAML as FileSystemTree");
-    let expected = tree();
+    let actual: Tree = from_str(SAMPLE_YAML).expect("parse YAML as FileSystemTree");
+    let expected = sample_tree();
     dbg!(&actual, &expected);
     assert_eq!(actual, expected);
 }
 
 #[test]
 fn deserialize() {
-    let actual = tree()
+    let actual = sample_tree()
         .pipe(|x: Tree| x)
         .pipe_ref(to_string)
         .expect("stringify a FileSystemTree as YAML");
-    let expected = YAML;
+    let expected = SAMPLE_YAML;
     eprintln!("\nACTUAL:\n{}\n", &actual);
     eprintln!("\nEXPECTED:\n{}\n", expected);
     macro_rules! parse {

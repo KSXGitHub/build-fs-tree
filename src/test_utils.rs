@@ -9,7 +9,7 @@ use text_block_macros::text_block_fnl;
 use FileSystemTree::{Directory, File};
 
 /// Create a YAML representation of a sample tree.
-pub const YAML: &str = text_block_fnl! {
+pub const SAMPLE_YAML: &str = text_block_fnl! {
     "---"
     "a:"
     "  abc: {}"
@@ -20,7 +20,7 @@ pub const YAML: &str = text_block_fnl! {
 };
 
 /// Create a sample tree.
-pub fn tree<Path, FileContent>() -> FileSystemTree<Path, FileContent>
+pub fn sample_tree<Path, FileContent>() -> FileSystemTree<Path, FileContent>
 where
     Path: Ord,
     &'static str: Into<Path> + Into<FileContent>,
