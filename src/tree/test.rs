@@ -9,7 +9,7 @@ type Tree = FileSystemTree<String, String>;
 #[test]
 fn serialize() {
     let actual: Tree = from_str(SAMPLE_YAML).expect("parse YAML as FileSystemTree");
-    let expected = sample_tree();
+    let expected: Tree = sample_tree();
     dbg!(&actual, &expected);
     assert_eq!(actual, expected);
 }
