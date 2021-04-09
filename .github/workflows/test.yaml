@@ -48,7 +48,7 @@ jobs:
       - name: Test
         env:
           RUST_BACKTRACE: '1'
-        run: cargo test --no-fail-fast --test-threads 1
+        run: cargo test --no-fail-fast -- --test-threads 1
 
   clippy_check:
     name: Clippy
