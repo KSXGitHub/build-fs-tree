@@ -17,6 +17,9 @@ where
     }
 
     fn write_file(path: &Self::Path, content: &Self::FileContent) -> Result<(), Error> {
+        if let Some(dir) = path.parent() {
+            create_dir_all(dir)?;
+        }
         write(path, content)
     }
 
