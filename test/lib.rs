@@ -185,4 +185,6 @@ mod build;
 #[cfg(test)]
 mod macros;
 #[cfg(test)]
+mod tree;
+#[cfg(test)]
 mod yaml;
