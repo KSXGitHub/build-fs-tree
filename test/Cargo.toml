@@ -11,10 +11,11 @@ path = "lib.rs"
 [dependencies]
 pipe-trait = "^0.3.2"
 maplit = "^1.0.2"
-mktemp = "^0.4.1"
 text-block-macros = "^0.1.0"
 serde_yaml = "^0.8.17"
 pretty_assertions = "^0.7.1"
+derive_more = "^0.99.13"
+rand = "^0.8.3"
 
 [dependencies.serde]
 version = "^1.0.125"

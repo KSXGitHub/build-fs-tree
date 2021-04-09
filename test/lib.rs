@@ -1,11 +1,49 @@
 use build_fs_tree::*;
+use derive_more::{AsRef, Deref};
 use maplit::btreemap;
-use mktemp::Temp;
+use pipe_trait::Pipe;
 use pretty_assertions::assert_eq;
-use std::{collections, ffi, fs, io::Error, path::Path};
+use rand::{distributions::Alphanumeric, thread_rng, Rng};
+use std::{
+    collections,
+    env::temp_dir,
+    ffi, fs,
+    io::Error,
+    path::{Path, PathBuf},
+};
 use text_block_macros::text_block_fnl;
 
 use FileSystemTree::{Directory, File};
+
+/// Representation of a temporary filesystem item.
+#[derive(Debug, AsRef, Deref)]
+pub struct Temp(PathBuf);
+
+impl Temp {
+    /// Create a temporary directory.
+    pub fn new_dir() -> Result<Self, Error> {
+        let path = thread_rng()
+            .sample_iter(&Alphanumeric)
+            .take(15)
+            .map(char::from)
+            .collect::<String>()
+            .pipe(|name| temp_dir().join(name));
+        if path.exists() {
+            return Self::new_dir();
+        }
+        fs::create_dir(&path)?;
+        path.pipe(Temp).pipe(Ok)
+    }
+}
+
+impl Drop for Temp {
+    fn drop(&mut self) {
+        let path = &self.0;
+        if let Err(error) = fs::remove_dir_all(path) {
+            eprintln!("warning: Failed to delete {:?}: {}", path, error);
+        }
+    }
+}
 
 /// Create a YAML representation of a sample tree.
 pub const SAMPLE_YAML: &str = text_block_fnl! {
