@@ -5,7 +5,7 @@ use pretty_assertions::assert_eq;
 
 type Tree = FileSystemTree<&'static str, &'static str>;
 
-macro_rules! test_path {
+macro_rules! test_case {
     ($name:ident, $path:expr, Some $expected:expr $(,)?) => {
         #[test]
         fn $name() {
@@ -32,9 +32,9 @@ macro_rules! test_path {
     };
 }
 
-test_path!(empty_path, [], Some sample_tree());
-test_path!(to_a_dir, ["b", "foo"], Some dir! { "bar" => file!("content of b/foo/bar") });
-test_path!(to_an_empty_dir, ["a", "abc"], Some dir! {});
-test_path!(to_a_file, ["a", "def"], Some file!("content of a/def"));
-test_path!(to_nothing_1, ["a", "abc", "not exist"], None);
-test_path!(to_nothing_2, ["x"], None);
+test_case!(empty_path, [], Some sample_tree());
+test_case!(to_a_dir, ["b", "foo"], Some dir! { "bar" => file!("content of b/foo/bar") });
+test_case!(to_an_empty_dir, ["a", "abc"], Some dir! {});
+test_case!(to_a_file, ["a", "def"], Some file!("content of a/def"));
+test_case!(to_nothing_1, ["a", "abc", "not exist"], None);
+test_case!(to_nothing_2, ["x"], None);
