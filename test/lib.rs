@@ -95,7 +95,7 @@ macro_rules! sample_tree {
     };
 }
 
-/// Create a temporary folder and set it as working directory.
+/// Create a temporary folder.
 pub fn temp_workspace() -> Temp {
     Temp::new_dir().expect("create a temporary directory")
 }
