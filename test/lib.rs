@@ -96,9 +96,8 @@ macro_rules! sample_tree {
 }
 
 /// Create a temporary folder and set it as working directory.
-pub fn temp_workspace() -> Result<Temp, Error> {
-    let temp = Temp::new_dir()?;
-    Ok(temp)
+pub fn temp_workspace() -> Temp {
+    Temp::new_dir().expect("create a temporary directory")
 }
 
 /// Create a set of `String` from `str` slices.
