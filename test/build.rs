@@ -26,6 +26,20 @@ test_case!(str_slice_str_slice, "root", &'static str, &'static str);
 test_case!(path_buf_str_slice, "root", PathBuf, &'static str);
 test_case!(path_buf_u8_vec, "root", PathBuf, ::std::vec::Vec<u8>);
 
+/// Error message when attempting to create a directory at location of a file.
+const DIR_ON_FILE_ERROR_SUFFIX: &str = if cfg!(windows) {
+    "Cannot create a file when that file already exists. (os error 183)"
+} else {
+    "File exists (os error 17)"
+};
+
+/// Error message when attempting to create a file at location of a directory.
+const FILE_ON_DIR_ERROR_SUFFIX: &str = if cfg!(windows) {
+    "Access is denied. (os error 5)"
+} else {
+    "Is a directory (os error 21)"
+};
+
 #[test]
 fn unmergeable_build() {
     let temp = temp_workspace().expect("create temporary directory");
@@ -38,7 +52,7 @@ fn unmergeable_build() {
         .build(&target)
         .expect_err("build for the second time")
         .to_string();
-    let expected_error = format!("create_dir {:?}: File exists (os error 17)", &target);
+    let expected_error = format!("create_dir {:?}: {}", &target, DIR_ON_FILE_ERROR_SUFFIX);
     assert_eq!(actual_error, expected_error);
 }
 
@@ -105,8 +119,9 @@ fn mergeable_build_conflict_file_on_dir() {
     .expect_err("build for the second time")
     .to_string();
     let expected_error = format!(
-        "write_file {:?}: Is a directory (os error 21)",
+        "write_file {:?}: {}",
         target.join("a"),
+        FILE_ON_DIR_ERROR_SUFFIX,
     );
     assert_eq!(actual_error, expected_error);
 }
@@ -130,8 +145,9 @@ fn mergeable_build_conflict_dir_on_file() {
     .expect_err("build for the second time")
     .to_string();
     let expected_error = format!(
-        "create_dir {:?}: File exists (os error 17)",
+        "create_dir {:?}: {}",
         target.join("a").join("def"),
+        DIR_ON_FILE_ERROR_SUFFIX,
     );
     assert_eq!(actual_error, expected_error);
 }
