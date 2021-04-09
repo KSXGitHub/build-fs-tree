@@ -32,10 +32,10 @@ macro_rules! function {
 
 function!(
     #[doc = "Transmute a [`DirectoryContent`] into a [`MergeableDirectoryContent`]."]
-    make_dir_content_mergeable :: DirectoryContent -> MergeableDirectoryContent
+    make_unmergeable_dir_content_mergeable :: DirectoryContent -> MergeableDirectoryContent
 );
 
 function!(
     #[doc = "Transmute a [`MergeableDirectoryContent`] into a [`DirectoryContent`]."]
-    make_dir_content_unmergeable :: MergeableDirectoryContent -> DirectoryContent
+    make_mergeable_dir_content_unmergeable :: MergeableDirectoryContent -> DirectoryContent
 );

@@ -1,4 +1,4 @@
-use crate::{make_dir_content_mergeable, FileSystemTree, MergeableFileSystemTree};
+use crate::{make_unmergeable_dir_content_mergeable, FileSystemTree, MergeableFileSystemTree};
 use pipe_trait::Pipe;
 use std::collections::BTreeMap;
 
@@ -50,7 +50,7 @@ where
         match self.into() {
             FileSystemTree::File(content) => NodeContent::File(content),
             FileSystemTree::Directory(content) => content
-                .pipe(make_dir_content_mergeable)
+                .pipe(make_unmergeable_dir_content_mergeable)
                 .pipe(NodeContent::Directory),
         }
     }
