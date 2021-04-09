@@ -151,3 +151,22 @@ fn mergeable_build_conflict_dir_on_file() {
     );
     assert_eq!(actual_error, expected_error);
 }
+#[test]
+fn mergeable_build_ensure_dir_to_write_file() {
+    let temp = temp_workspace().expect("create temporary directory");
+    MergeableTree::from(dir! {
+        "a/b/c" => file!("a/b/c"),
+        "d/e/f" => dir! {
+            "foo" => file!("d/e/f/foo"),
+            "bar/baz" => file!("d/e/f/bar/baz"),
+        },
+    })
+    .build(&temp)
+    .expect("build filesystem tree");
+    assert_file!(temp.join("a").join("b").join("c"), "a/b/c");
+    assert_file!(temp.join("d").join("e").join("f").join("foo"), "d/e/f/foo");
+    assert_file!(
+        temp.join("d").join("e").join("f").join("bar").join("baz"),
+        "d/e/f/bar/baz",
+    );
+}
