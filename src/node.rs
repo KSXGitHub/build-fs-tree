@@ -1,6 +1,6 @@
+use crate::{FileSystemTree, MergeableFileSystemTree};
+use pipe_trait::Pipe;
 use std::collections::BTreeMap;
-
-use crate::FileSystemTree;
 
 /// Node of a filesystem tree.
 pub trait Node {
@@ -36,6 +36,24 @@ where
         match self {
             FileSystemTree::File(content) => NodeContent::File(content),
             FileSystemTree::Directory(content) => NodeContent::Directory(content),
+        }
+    }
+}
+impl<Path, FileContent> Node for MergeableFileSystemTree<Path, FileContent>
+where
+    Path: Ord,
+{
+    type FileContent = FileContent;
+    type DirectoryContent = Vec<(Path, Self)>;
+
+    fn read(self) -> NodeContent<FileContent, Self::DirectoryContent> {
+        match self.into() {
+            FileSystemTree::File(content) => NodeContent::File(content),
+            FileSystemTree::Directory(content) => content
+                .into_iter()
+                .map(|(key, value)| (key, MergeableFileSystemTree::from(value)))
+                .collect::<Vec<_>>()
+                .pipe(NodeContent::Directory),
         }
     }
 }
