@@ -1,0 +1,16 @@
+[package]
+name = "private-test-utils"
+version = "0.0.0"
+authors = ["khai96_ <hvksmr1996@gmail.com>"]
+edition = "2018"
+build = false
+
+[lib]
+name = "private_test_utils"
+path = "lib.rs"
+
+[dependencies]
+maplit = "^1.0.2"
+
+[dependencies.build-fs-tree]
+path = "../src"

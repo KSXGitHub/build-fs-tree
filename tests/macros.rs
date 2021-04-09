@@ -1,8 +1,7 @@
 #![cfg(test)]
 #![no_implicit_prelude]
-pub mod utils;
-pub use utils::*;
 
+use crate::sample_tree;
 use ::build_fs_tree::{dir, file};
 
 macro_rules! test_case {
