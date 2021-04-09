@@ -2,7 +2,7 @@ use build_fs_tree::*;
 use maplit::btreemap;
 use mktemp::Temp;
 use pretty_assertions::assert_eq;
-use std::{collections, env::set_current_dir, ffi, fs, io::Error, path::Path};
+use std::{collections, ffi, fs, io::Error, path::Path};
 use text_block_macros::text_block_fnl;
 
 use FileSystemTree::{Directory, File};
@@ -58,7 +58,6 @@ macro_rules! sample_tree {
 /// Create a temporary folder and set it as working directory.
 pub fn temp_workspace() -> Result<Temp, Error> {
     let temp = Temp::new_dir()?;
-    set_current_dir(&temp)?;
     Ok(temp)
 }
 
