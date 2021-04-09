@@ -1,5 +1,5 @@
 #![cfg(test)]
-use crate::{assert_dir, assert_file, sample_tree, string_set, temp_workspace, test_sample_tree};
+use crate::{assert_dir, assert_file, create_temp_dir, sample_tree, string_set, test_sample_tree};
 use build_fs_tree::{dir, file, Build, MergeableFileSystemTree};
 use pipe_trait::Pipe;
 use pretty_assertions::assert_eq;
@@ -11,7 +11,7 @@ macro_rules! test_case {
     ($name:ident, $root:expr, $key:ty, $value:ty $(,)?) => {
         #[test]
         fn $name() {
-            let temp = temp_workspace();
+            let temp = create_temp_dir();
             let target = PathBuf::from(temp.join($root));
             sample_tree::<$key, $value>().build(&target).unwrap();
             test_sample_tree(&target);
@@ -42,7 +42,7 @@ const FILE_ON_DIR_ERROR_SUFFIX: &str = if cfg!(windows) {
 
 #[test]
 fn unmergeable_build() {
-    let temp = temp_workspace();
+    let temp = create_temp_dir();
     let target = temp.join("root");
     sample_tree::<&str, &str>()
         .build(&target)
@@ -58,7 +58,7 @@ fn unmergeable_build() {
 
 #[test]
 fn mergeable_build() {
-    let temp = temp_workspace();
+    let temp = create_temp_dir();
     let target = temp.join("root");
     sample_tree::<&str, &str>()
         .build(&target)
@@ -106,7 +106,7 @@ fn mergeable_build() {
 
 #[test]
 fn mergeable_build_conflict_file_on_dir() {
-    let temp = temp_workspace();
+    let temp = create_temp_dir();
     let target = temp.join("root");
     sample_tree::<&str, &str>()
         .build(&target)
@@ -128,7 +128,7 @@ fn mergeable_build_conflict_file_on_dir() {
 
 #[test]
 fn mergeable_build_conflict_dir_on_file() {
-    let temp = temp_workspace();
+    let temp = create_temp_dir();
     let target = temp.join("root");
     sample_tree::<&str, &str>()
         .build(&target)
@@ -153,7 +153,7 @@ fn mergeable_build_conflict_dir_on_file() {
 }
 #[test]
 fn mergeable_build_ensure_dir_to_write_file() {
-    let temp = temp_workspace();
+    let temp = create_temp_dir();
     MergeableTree::from(dir! {
         "a/b/c" => file!("a/b/c"),
         "d/e/f" => dir! {
