@@ -1,6 +1,7 @@
 #![cfg(test)]
 use crate::{sample_tree, temp_workspace, test_sample_tree};
 use build_fs_tree::Build;
+use pretty_assertions::assert_eq;
 use std::path::PathBuf;
 
 macro_rules! test_case {
