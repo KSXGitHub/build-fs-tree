@@ -46,6 +46,8 @@ jobs:
         run: cargo build --locked
 
       - name: Test
+        env:
+          RUST_BACKTRACE: '1'
         run: cargo test --no-fail-fast
 
   clippy_check:
