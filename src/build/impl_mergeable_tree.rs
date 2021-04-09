@@ -1,11 +1,11 @@
-use crate::{Build, FileSystemTree};
+use crate::{Build, MergeableFileSystemTree};
 use std::{
-    fs::{create_dir, write},
+    fs::{create_dir_all, write},
     io::Error,
     path::{Path, PathBuf},
 };
 
-impl<Name, FileContent> Build<Name, Error> for FileSystemTree<Name, FileContent>
+impl<Name, FileContent> Build<Name, Error> for MergeableFileSystemTree<Name, FileContent>
 where
     Name: AsRef<Path> + Ord,
     FileContent: AsRef<[u8]>,
@@ -21,6 +21,6 @@ where
     }
 
     fn create_dir(path: &Self::Path) -> Result<(), Error> {
-        create_dir(path)
+        create_dir_all(path)
     }
 }

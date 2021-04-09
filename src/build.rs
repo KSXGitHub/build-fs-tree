@@ -1,4 +1,5 @@
 mod error;
+mod impl_mergeable_tree;
 mod impl_tree;
 
 pub use error::*;
