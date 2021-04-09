@@ -8,8 +8,6 @@ use text_block_macros::text_block_fnl;
 
 use FileSystemTree::{Directory, File};
 
-pub type Tree = FileSystemTree<String, String>;
-
 pub const YAML: &str = text_block_fnl! {
     "---"
     "a:"
@@ -20,15 +18,19 @@ pub const YAML: &str = text_block_fnl! {
     "    bar: content of b/foo/bar"
 };
 
-pub fn tree() -> Tree {
+pub fn tree<Path, FileContent>() -> FileSystemTree<Path, FileContent>
+where
+    Path: Ord,
+    &'static str: Into<Path> + Into<FileContent>,
+{
     Directory(btreemap! {
-        "a".to_string() => Directory(btreemap! {
-            "abc".to_string() => Directory(btreemap! {}),
-            "def".to_string() => File("content of a/def".to_string()),
+        "a".into() => Directory(btreemap! {
+            "abc".into() => Directory(btreemap! {}),
+            "def".into() => File("content of a/def".into()),
         }),
-        "b".to_string() => Directory(btreemap! {
-            "foo".to_string() => Directory(btreemap! {
-                "bar".to_string() => File("content of b/foo/bar".to_string()),
+        "b".into() => Directory(btreemap! {
+            "foo".into() => Directory(btreemap! {
+                "bar".into() => File("content of b/foo/bar".into()),
             }),
         }),
     })

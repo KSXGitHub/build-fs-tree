@@ -4,6 +4,8 @@ use crate::*;
 use pipe_trait::Pipe;
 use serde_yaml::{from_str, to_string, Value};
 
+type Tree = FileSystemTree<String, String>;
+
 #[test]
 fn serialize() {
     let actual: Tree = from_str(YAML).expect("parse YAML as FileSystemTree");
@@ -15,6 +17,7 @@ fn serialize() {
 #[test]
 fn deserialize() {
     let actual = tree()
+        .pipe(|x: Tree| x)
         .pipe_ref(to_string)
         .expect("stringify a FileSystemTree as YAML");
     let expected = YAML;
