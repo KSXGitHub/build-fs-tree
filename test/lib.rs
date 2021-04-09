@@ -143,4 +143,4 @@ pub fn test_sample_tree(root: &Path) {
 
 mod build;
 mod macros;
-mod tree;
+mod yaml;
