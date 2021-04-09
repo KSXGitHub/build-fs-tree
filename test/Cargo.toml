@@ -1,7 +1,6 @@
 [package]
 name = "private-test-utils"
 version = "0.0.0"
-authors = ["khai96_ <hvksmr1996@gmail.com>"]
 edition = "2018"
 build = false
 
