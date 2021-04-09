@@ -2,11 +2,12 @@ use crate::sample_tree;
 use build_fs_tree::{dir, file, FileSystemTree};
 use pretty_assertions::assert_eq;
 
+type Tree = FileSystemTree<&'static str, &'static str>;
+
 macro_rules! test_path {
     ($name:ident, $path:expr, Some $expected:expr $(,)?) => {
         #[test]
         fn $name() {
-            type Tree = FileSystemTree<&'static str, &'static str>;
             let actual_tree: Tree = sample_tree();
             let path = $path;
             let mut path_iter = path.iter();
@@ -20,7 +21,6 @@ macro_rules! test_path {
     ($name:ident, $path:expr, None $(,)?) => {
         #[test]
         fn $name() {
-            type Tree = FileSystemTree<&'static str, &'static str>;
             let actual_tree: Tree = sample_tree();
             let path = $path;
             let mut path_iter = path.iter();
