@@ -1,6 +1,5 @@
-use ::build_fs_tree::*;
-use ::maplit::btreemap;
-use ::std::{cmp::Ord, convert::Into};
+use build_fs_tree::*;
+use maplit::btreemap;
 
 use FileSystemTree::{Directory, File};
 
