@@ -31,14 +31,11 @@ name = "build-fs-tree"
 version = "0.0.0"
 dependencies = [
  "derive_more",
- "maplit",
- "mktemp",
  "pipe-trait 0.3.2",
  "serde",
  "serde_yaml",
  "structopt",
  "structopt-utilities",
- "text-block-macros",
 ]
 
 [[package]]
@@ -166,6 +163,11 @@ version = "0.0.0"
 dependencies = [
  "build-fs-tree",
  "maplit",
+ "mktemp",
+ "pipe-trait 0.3.2",
+ "serde",
+ "serde_yaml",
+ "text-block-macros",
 ]
 
 [[package]]

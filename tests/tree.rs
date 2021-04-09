@@ -1,6 +1,6 @@
 #![cfg(test)]
-
-use crate::*;
+use crate::{sample_tree, SAMPLE_YAML};
+use build_fs_tree::FileSystemTree;
 use pipe_trait::Pipe;
 use serde_yaml::{from_str, to_string, Value};
 

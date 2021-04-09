@@ -27,6 +27,3 @@ where
 }
 
 mod methods;
-
-#[cfg(test)]
-mod test;

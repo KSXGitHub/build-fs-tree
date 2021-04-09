@@ -19,8 +19,3 @@ structopt-utilities = "^0.0.8"
 [dependencies.serde]
 version = "^1.0.125"
 features = ["derive"]
-
-[dev-dependencies]
-maplit = "^1.0.2"
-mktemp = "^0.4.1"
-text-block-macros = "^0.1.0"
