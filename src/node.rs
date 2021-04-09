@@ -1,4 +1,4 @@
-use crate::{FileSystemTree, MergeableFileSystemTree};
+use crate::{make_dir_content_mergeable, FileSystemTree, MergeableFileSystemTree};
 use pipe_trait::Pipe;
 use std::collections::BTreeMap;
 
@@ -44,15 +44,13 @@ where
     Path: Ord,
 {
     type FileContent = FileContent;
-    type DirectoryContent = Vec<(Path, Self)>;
+    type DirectoryContent = BTreeMap<Path, Self>;
 
     fn read(self) -> NodeContent<FileContent, Self::DirectoryContent> {
         match self.into() {
             FileSystemTree::File(content) => NodeContent::File(content),
             FileSystemTree::Directory(content) => content
-                .into_iter()
-                .map(|(key, value)| (key, MergeableFileSystemTree::from(value)))
-                .collect::<Vec<_>>()
+                .pipe(make_dir_content_mergeable)
                 .pipe(NodeContent::Directory),
         }
     }
