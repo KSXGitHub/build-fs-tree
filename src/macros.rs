@@ -1,6 +1,6 @@
 #![no_implicit_prelude]
 
-/// Create a [directory](crate::FileSystemTree::Directory).
+/// Create representation of a [directory](crate::FileSystemTree::Directory).
 #[macro_export]
 macro_rules! dir {
     ($($key:expr => $value:expr),* $(,)?) => {{
@@ -16,7 +16,7 @@ macro_rules! dir {
     }};
 }
 
-/// Create a [file](crate::FileSystemTree::File).
+/// Create representation of a [file](crate::FileSystemTree::File).
 #[macro_export]
 macro_rules! file {
     ($content:expr) => {
