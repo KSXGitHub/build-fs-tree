@@ -37,3 +37,34 @@ test_path!(to_an_empty_dir, ["a", "abc"], Some dir! {});
 test_path!(to_a_file, ["a", "def"], Some file!("content of a/def"));
 test_path!(to_nothing_1, ["a", "abc", "not exist"], None);
 test_path!(to_nothing_2, ["x"], None);
+
+#[test]
+fn test_path_mut() {
+    let mut tree: Tree = sample_tree();
+    let path = ["a", "def"];
+    let value = || -> Tree {
+        dir! {
+            "ghi" => file!("content of a/def/ghi"),
+        }
+    };
+    *tree.path_mut(&mut path.iter()).unwrap() = value();
+    let expected: Tree = dir! {
+        "a" => dir! {
+            "abc" => dir! {},
+            "def" => value(),
+        },
+        "b" => dir! {
+            "foo" => dir! {
+                "bar" => file!("content of b/foo/bar"),
+            },
+        },
+    };
+    assert_eq!(tree, expected);
+}
+
+#[test]
+fn test_path_mut_to_nothing() {
+    let mut tree: Tree = sample_tree();
+    let path = ["a", "def", "not exist"];
+    assert_eq!(tree.path_mut(&mut path.iter()), None);
+}
