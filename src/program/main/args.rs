@@ -8,9 +8,7 @@ use text_block_macros::text_block;
     name = "build-fs-tree",
     about = "Create a filesystem tree from YAML",
 
-    long_about = text_block! {
-        "Create a filesystem tree from YAML"
-        ""
+    after_help = text_block! {
         "EXAMPLES:"
         "    Create two text files in a new directory"
         "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree create foo-and-bar"
@@ -45,10 +43,7 @@ pub enum Command {
             "Merged paths are not allowed"
         ),
 
-        long_about = text_block! {
-            "Read YAML from stdin and create a new filesystem tree at <TARGET>."
-            "Merged paths are not allowed"
-            ""
+        after_help = text_block! {
             "EXAMPLES:"
             "    Create two text files in a new directory"
             "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree create foo-and-bar"
@@ -69,10 +64,7 @@ pub enum Command {
             "Parent directories would be created if they are not already exist",
         ),
 
-        long_about = text_block! {
-            "Read YAML from stdin and pollute an existing filesystem tree at <TARGET>."
-            "Parent directories would be created if they are not already exist"
-            ""
+        after_help = text_block! {
             "EXAMPLES:"
             "    Create two text files in the current directory"
             "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree pollute ."
