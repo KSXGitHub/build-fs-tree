@@ -3,7 +3,7 @@
 /// Create representation of a [directory](crate::FileSystemTree::Directory).
 #[macro_export]
 macro_rules! dir {
-    ($($key:expr => $value:expr),* $(,)?) => {{
+    ($($key:expr => $value:expr)*) => {{
         let mut _map = ::std::collections::BTreeMap::new();
         $(
             let _ = ::std::collections::BTreeMap::insert(

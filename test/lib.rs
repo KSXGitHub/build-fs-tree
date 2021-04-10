@@ -83,14 +83,14 @@ macro_rules! sample_tree {
     () => {
         dir! {
             "a" => dir! {
-                "abc" => dir! {},
-                "def" => file!("content of a/def"),
-            },
+                "abc" => dir! {}
+                "def" => file!("content of a/def")
+            }
             "b" => dir! {
                 "foo" => dir! {
-                    "bar" => file!("content of b/foo/bar"),
-                },
-            },
+                    "bar" => file!("content of b/foo/bar")
+                }
+            }
         }
     };
 }

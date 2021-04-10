@@ -72,15 +72,15 @@ fn mergeable_build() {
     MergeableTree::from(dir! {
         "a" => dir! {
             "ghi" => dir! {
-                "0" => dir! {},
-                "1" => file!("content of a/ghi/1"),
-            },
-        },
+                "0" => dir! {}
+                "1" => file!("content of a/ghi/1")
+            }
+        }
         "z" => dir! {
             "x" => dir! {
-                "c" => file!("content of z/x/c"),
-            },
-        },
+                "c" => file!("content of z/x/c")
+            }
+        }
     })
     .build(&target)
     .expect("build for the third time: add some items");
@@ -113,7 +113,7 @@ fn mergeable_build_conflict_file_on_dir() {
         .expect("build for the first time");
     test_sample_tree(&target);
     let actual_error = MergeableTree::from(dir! {
-        "a" => file!("should not exist"),
+        "a" => file!("should not exist")
     })
     .build(&target)
     .expect_err("build for the second time")
@@ -137,9 +137,9 @@ fn mergeable_build_conflict_dir_on_file() {
     let actual_error = MergeableTree::from(dir! {
         "a" => dir! {
             "def" => dir! {
-                "b" => file!("should not exist"),
-            },
-        },
+                "b" => file!("should not exist")
+            }
+        }
     })
     .build(&target)
     .expect_err("build for the second time")
@@ -155,11 +155,11 @@ fn mergeable_build_conflict_dir_on_file() {
 fn mergeable_build_ensure_dir_to_write_file() {
     let temp = create_temp_dir();
     MergeableTree::from(dir! {
-        "a/b/c" => file!("a/b/c"),
+        "a/b/c" => file!("a/b/c")
         "d/e/f" => dir! {
-            "foo" => file!("d/e/f/foo"),
-            "bar/baz" => file!("d/e/f/bar/baz"),
-        },
+            "foo" => file!("d/e/f/foo")
+            "bar/baz" => file!("d/e/f/bar/baz")
+        }
     })
     .build(&temp)
     .expect("build filesystem tree");
