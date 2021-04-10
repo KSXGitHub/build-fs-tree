@@ -8,6 +8,7 @@ pub use app::*;
 pub use args::*;
 pub use run::*;
 
+/// The main program.
 pub fn main() -> ! {
     std::process::exit(match App::from_env().run() {
         Ok(()) => 0,
