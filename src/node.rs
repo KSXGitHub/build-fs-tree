@@ -39,6 +39,7 @@ where
         }
     }
 }
+
 impl<Path, FileContent> Node for MergeableFileSystemTree<Path, FileContent>
 where
     Path: Ord,
