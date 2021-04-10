@@ -5,3 +5,4 @@
 * [ ] GitHub secrets.
 * [ ] README.md
 * [x] LICENSE.md
+* [ ] Finally, delete this file.
