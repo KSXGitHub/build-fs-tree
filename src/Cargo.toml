@@ -8,6 +8,17 @@ build = false
 [lib]
 name = "build_fs_tree"
 path = "lib.rs"
+doc = true
+
+[[bin]]
+name = "build-fs-tree"
+path = "_cli/build-fs-tree.rs"
+doc = false
+
+[[bin]]
+name = "build-fs-tree-completions"
+path = "_cli/build-fs-tree-completions.rs"
+doc = false
 
 [dependencies]
 derive_more = "^0.99.13"
@@ -15,6 +26,7 @@ pipe-trait = "^0.3.2"
 serde_yaml = "^0.8.17"
 structopt = "^0.3.21"
 structopt-utilities = "^0.0.8"
+text-block-macros = "^0.1.0"
 
 [dependencies.serde]
 version = "^1.0.125"

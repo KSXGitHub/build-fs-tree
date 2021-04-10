@@ -12,20 +12,20 @@ fn mutate() {
     let path = ["a", "def"];
     let value = || -> Tree {
         dir! {
-            "ghi" => file!("content of a/def/ghi"),
+            "ghi" => file!("content of a/def/ghi")
         }
     };
     *tree.path_mut(&mut path.iter()).unwrap() = value();
     let expected: Tree = dir! {
         "a" => dir! {
-            "abc" => dir! {},
-            "def" => value(),
-        },
+            "abc" => dir! {}
+            "def" => value()
+        }
         "b" => dir! {
             "foo" => dir! {
-                "bar" => file!("content of b/foo/bar"),
-            },
-        },
+                "bar" => file!("content of b/foo/bar")
+            }
+        }
     };
     assert_eq!(tree, expected);
 }

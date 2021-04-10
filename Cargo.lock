@@ -45,6 +45,7 @@ dependencies = [
  "serde_yaml",
  "structopt",
  "structopt-utilities",
+ "text-block-macros",
 ]
 
 [[package]]
