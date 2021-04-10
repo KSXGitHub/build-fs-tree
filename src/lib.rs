@@ -61,5 +61,7 @@ pub use macros::*;
 pub use node::*;
 pub use tree::*;
 
+pub mod program;
+
 pub use serde;
 pub use serde_yaml;
