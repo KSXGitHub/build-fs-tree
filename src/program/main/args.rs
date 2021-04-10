@@ -6,7 +6,14 @@ use text_block_macros::text_block;
 #[derive(Debug, StructOpt)]
 #[structopt(
     name = "build-fs-tree",
-    about = "Create a filesystem tree from YAML",
+
+    long_about = text_block! {
+        "Create a filesystem tree from YAML"
+        ""
+        "Source: https://github.com/KSXGitHub/build-fs-tree"
+        "Issues: https://github.com/KSXGitHub/build-fs-tree/issues"
+        "Donate: https://patreon.com/khai96_"
+    },
 
     after_help = text_block! {
         "EXAMPLES:"
