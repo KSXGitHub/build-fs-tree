@@ -40,7 +40,7 @@ pub enum Command {
     #[structopt(
         about = concat!(
             "Read YAML from stdin and create a new filesystem tree at <TARGET>. ",
-            "Merged paths are not allowed"
+            "Merged paths are not allowed",
         ),
 
         after_help = text_block! {
