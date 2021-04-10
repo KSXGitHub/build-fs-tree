@@ -22,3 +22,18 @@ test_case!(string_str_slice, ::std::string::String, &'static str);
 test_case!(str_slice_str_slice, &'static str, &'static str);
 test_case!(path_buf_str_slice, ::std::path::PathBuf, &'static str);
 test_case!(path_buf_u8_vec, ::std::path::PathBuf, ::std::vec::Vec<u8>);
+
+#[test]
+fn optional_commas() {
+    type Tree = ::build_fs_tree::FileSystemTree<&'static str, &'static str>;
+
+    let actual: Tree = dir! {
+        "a" => file!("foo"),
+        "b" => file!("bar"),
+    };
+    let expected: Tree = dir! {
+        "a" => file!("foo")
+        "b" => file!("bar")
+    };
+    ::std::assert_eq!(actual, expected);
+}
