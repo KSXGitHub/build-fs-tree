@@ -12,6 +12,7 @@ path = "lib.rs"
 [[bin]]
 name = "build-fs-tree"
 path = "_cli/build-fs-tree.rs"
+doc = false
 
 [dependencies]
 derive_more = "^0.99.13"
