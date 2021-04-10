@@ -15,6 +15,11 @@ name = "build-fs-tree"
 path = "_cli/build-fs-tree.rs"
 doc = false
 
+[[bin]]
+name = "build-fs-tree-completions"
+path = "_cli/build-fs-tree-completions.rs"
+doc = false
+
 [dependencies]
 derive_more = "^0.99.13"
 pipe-trait = "^0.3.2"
