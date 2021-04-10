@@ -62,3 +62,4 @@ pub use node::*;
 pub use tree::*;
 
 pub use serde;
+pub use serde_yaml;
