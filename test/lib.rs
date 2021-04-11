@@ -246,6 +246,8 @@ pub fn test_sample_tree(root: &Path) {
 #[cfg(test)]
 mod build;
 #[cfg(test)]
+mod completions;
+#[cfg(test)]
 mod macros;
 #[cfg(test)]
 mod program;
