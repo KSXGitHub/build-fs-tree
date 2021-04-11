@@ -25,14 +25,19 @@ pub const TARGET_DIR: &str = if cfg!(debug_assertions) {
     "release"
 };
 
-/// The main command
-pub fn main_command() -> Command {
+/// Absolute path to the directory that stores all compilation artifacts.
+pub fn target_dir() -> PathBuf {
     env!("CARGO_MANIFEST_DIR")
         .pipe(PathBuf::from)
         .parent()
         .expect("parent of $CARGO_MANIFEST_DIR")
         .join("target")
         .join(TARGET_DIR)
+}
+
+/// The main command
+pub fn main_command() -> Command {
+    target_dir()
         .join("build-fs-tree")
         .pipe(Command::new)
         .with_stdin(Stdio::piped())
