@@ -154,15 +154,15 @@
 #[macro_export]
 macro_rules! dir {
     ($($key:expr => $value:expr $(,)?)*) => {{
-        let mut _map = ::std::collections::BTreeMap::new();
+        let mut __directory_content = ::std::collections::BTreeMap::new();
         $(
             let _ = ::std::collections::BTreeMap::insert(
-                &mut _map,
+                &mut __directory_content,
                 ::std::convert::From::from($key),
                 $value
             );
         )*
-        ::build_fs_tree::FileSystemTree::Directory(_map)
+        ::build_fs_tree::FileSystemTree::Directory(__directory_content)
     }};
 }
 

@@ -7,7 +7,8 @@ use rand::{distributions::Alphanumeric, thread_rng, Rng};
 use std::{
     collections,
     env::temp_dir,
-    ffi, fs,
+    ffi::OsString,
+    fs::{create_dir, read_dir, read_to_string, remove_dir_all},
     io::Error,
     path::{Path, PathBuf},
 };
@@ -33,7 +34,7 @@ impl Temp {
         if path.exists() {
             return Self::new_dir();
         }
-        fs::create_dir(&path)?;
+        create_dir(&path)?;
         path.pipe(Temp).pipe(Ok)
     }
 }
@@ -41,7 +42,7 @@ impl Temp {
 impl Drop for Temp {
     fn drop(&mut self) {
         let path = &self.0;
-        if let Err(error) = fs::remove_dir_all(path) {
+        if let Err(error) = remove_dir_all(path) {
             eprintln!("warning: Failed to delete {:?}: {}", path, error);
         }
     }
@@ -110,19 +111,19 @@ macro_rules! string_set {
 
 /// List names of children of a directory.
 pub fn list_children_names(path: impl AsRef<Path>) -> collections::BTreeSet<String> {
-    fs::read_dir(path)
+    read_dir(path)
         .expect("read_dir")
         .into_iter()
         .filter_map(Result::ok)
         .map(|entry| entry.file_name())
-        .map(ffi::OsString::into_string)
+        .map(OsString::into_string)
         .filter_map(Result::ok)
         .collect()
 }
 
 /// Read content of a text file.
 pub fn read_text_file(path: impl AsRef<Path>) -> String {
-    fs::read_to_string(path).expect("read_to_string")
+    read_to_string(path).expect("read_to_string")
 }
 
 /// Assert that a directory has a only has certain children.
@@ -182,7 +183,11 @@ pub fn test_sample_tree(root: &Path) {
 #[cfg(test)]
 mod build;
 #[cfg(test)]
+mod completions;
+#[cfg(test)]
 mod macros;
+#[cfg(test)]
+mod program;
 #[cfg(test)]
 mod tree;
 #[cfg(test)]

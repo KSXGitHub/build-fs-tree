@@ -70,6 +70,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "command-extra"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b1b4fe32ea3f2a8d975b6c5cdd3f02ac358f471ca24dbb18d7a4ca58b3193d2d"
+
+[[package]]
 name = "convert_case"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -206,6 +212,7 @@ name = "private-test-utils"
 version = "0.0.0"
 dependencies = [
  "build-fs-tree",
+ "command-extra",
  "derive_more",
  "maplit",
  "pipe-trait 0.3.2",

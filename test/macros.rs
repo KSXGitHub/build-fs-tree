@@ -26,7 +26,6 @@ test_case!(path_buf_u8_vec, ::std::path::PathBuf, ::std::vec::Vec<u8>);
 #[test]
 fn optional_commas() {
     type Tree = ::build_fs_tree::FileSystemTree<&'static str, &'static str>;
-
     let actual: Tree = dir! {
         "a" => file!("foo"),
         "b" => file!("bar"),
