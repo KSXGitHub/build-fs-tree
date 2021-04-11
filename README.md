@@ -13,7 +13,7 @@ When I write integration tests, I often find myself needing to create temporary 
 
 ### The Library
 
-Go to the [docs.rs](https://docs.rs/build-fs-tree/) for the full API reference.
+Go to [docs.rs](https://docs.rs/build-fs-tree/) for the full API reference.
 
 #### `FileSystemTree`
 
