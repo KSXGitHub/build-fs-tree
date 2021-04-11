@@ -7,8 +7,8 @@ edition = "2018"
 build = false
 readme = "README.md"
 license = "MIT"
-documentation = "https://docs.rs/pipe-trait"
-repository = "https://github.com/KSXGitHub/pipe-trait.git"
+documentation = "https://docs.rs/build-fs-tree"
+repository = "https://github.com/KSXGitHub/build-fs-tree.git"
 keywords = [
   "file",
   "directory",
