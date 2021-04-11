@@ -1,8 +1,8 @@
 # Tasks to complete before the first deployment
 
-* [ ] Executable binary.
-* [ ] Completion files.
+* [x] Executable binary.
+* [x] Completion files.
 * [ ] GitHub secrets.
-* [ ] README.md
+* [x] README.md
 * [x] LICENSE.md
 * [ ] Finally, delete this file.
