@@ -18,7 +18,7 @@ use text_block_macros::text_block_fnl;
 
 use FileSystemTree::{Directory, File};
 
-/// Directory that stores all compilation artifacts.
+/// Name of the directory that stores all compilation artifacts.
 pub const TARGET_DIR: &str = if cfg!(debug_assertions) {
     "debug"
 } else {
