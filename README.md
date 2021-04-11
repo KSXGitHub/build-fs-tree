@@ -41,7 +41,7 @@ tree.build(&"public".into()).unwrap();
 
 Unlike `FileSystemTree::build`, `MergeableFileSystemTree::build` can write over an existing directory and create parent directories that were not exist before at the cost of performance.
 
-You can convert a `FileSystemTree` into a `MergeableFileSystemTree` via `From::from`/`Into::into` or vice versa.
+You can convert a `FileSystemTree` into a `MergeableFileSystemTree` via `From::from`/`Into::into` and vice versa.
 
 ```rust
 use build_fs_tree::{MergeableFileSystemTree, Build, dir, file};

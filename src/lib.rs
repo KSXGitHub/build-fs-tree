@@ -31,7 +31,7 @@
 //! cost of performance.
 //!
 //! You can convert a `FileSystemTree` into a `MergeableFileSystemTree` via [`From::from`]/[`Into::into`]
-//! or vice versa.
+//! and vice versa.
 //!
 //! **Example:**
 //!
