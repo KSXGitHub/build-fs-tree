@@ -9,7 +9,7 @@ makedepends=(cargo)
 
 build() {
   cd "$srcdir/build-fs-tree-$pkgver"
-  cargo build --release --locked
+  cargo build --release --locked --bin build-fs-tree
 }
 
 package() {
