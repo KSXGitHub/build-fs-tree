@@ -1,5 +1,4 @@
 use build_fs_tree::*;
-use command_extra::CommandExtra;
 use derive_more::{AsRef, Deref};
 use maplit::btreemap;
 use pipe_trait::Pipe;
@@ -10,74 +9,12 @@ use std::{
     env::temp_dir,
     ffi::OsString,
     fs::{create_dir, read_dir, read_to_string, remove_dir_all},
-    io::{Error, Write},
+    io::Error,
     path::{Path, PathBuf},
-    process::{Command, Output, Stdio},
 };
 use text_block_macros::text_block_fnl;
 
 use FileSystemTree::{Directory, File};
-
-/// Name of the directory that stores all compilation artifacts.
-pub const TARGET_DIR: &str = if cfg!(debug_assertions) {
-    "debug"
-} else {
-    "release"
-};
-
-/// Absolute path to the directory that stores all compilation artifacts.
-pub fn target_dir() -> PathBuf {
-    env!("CARGO_MANIFEST_DIR")
-        .pipe(PathBuf::from)
-        .parent()
-        .expect("parent of $CARGO_MANIFEST_DIR")
-        .join("target")
-        .join(TARGET_DIR)
-}
-
-/// The main command.
-pub fn main_command() -> Command {
-    target_dir()
-        .join("build-fs-tree")
-        .pipe(Command::new)
-        .with_stdin(Stdio::piped())
-        .with_stdout(Stdio::piped())
-        .with_stderr(Stdio::piped())
-}
-
-/// Run a subcommand of the main command.
-pub fn run_main_subcommand(
-    working_directory: &Temp,
-    command: &'static str,
-    target: &'static str,
-    input: &'static str,
-) -> (bool, Option<i32>, String, String) {
-    let mut child = main_command()
-        .with_current_dir(working_directory.as_path())
-        .with_arg(command)
-        .with_arg(target)
-        .spawn()
-        .expect("spawn the main command");
-    child
-        .stdin
-        .as_mut()
-        .expect("get stdin")
-        .write_all(input.as_bytes())
-        .expect("write input to stdin");
-    let Output {
-        status,
-        stdout,
-        stderr,
-    } = child
-        .wait_with_output()
-        .expect("get the output of the command");
-    (
-        status.success(),
-        status.code(),
-        String::from_utf8(stdout).expect("decode stdout as utf-8"),
-        String::from_utf8(stderr).expect("decode stdout as utf-8"),
-    )
-}
 
 /// Representation of a temporary filesystem item.
 ///
