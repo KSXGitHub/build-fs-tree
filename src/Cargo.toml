@@ -1,9 +1,28 @@
 [package]
 name = "build-fs-tree"
+description = "Generate a filesystem tree from a macro or a YAML tree"
 version = "0.0.0"
 authors = ["khai96_ <hvksmr1996@gmail.com>"]
 edition = "2018"
 build = false
+readme = "README.md"
+license = "MIT"
+documentation = "https://docs.rs/pipe-trait"
+repository = "https://github.com/KSXGitHub/pipe-trait.git"
+keywords = [
+  "file",
+  "directory",
+  "filesystem",
+  "tree",
+  "yaml",
+]
+categories = ["rust-patterns"]
+include = [
+  "*.rs",
+  "/Cargo.toml",
+  "/README.md",
+  "/LICENSE.md",
+]
 
 [lib]
 name = "build_fs_tree"
