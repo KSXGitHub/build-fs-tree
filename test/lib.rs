@@ -35,7 +35,7 @@ pub fn target_dir() -> PathBuf {
         .join(TARGET_DIR)
 }
 
-/// The main command
+/// The main command.
 pub fn main_command() -> Command {
     target_dir()
         .join("build-fs-tree")
@@ -45,7 +45,7 @@ pub fn main_command() -> Command {
         .with_stderr(Stdio::piped())
 }
 
-/// Run a subcommand of the main command
+/// Run a subcommand of the main command.
 pub fn run_main_subcommand(
     working_directory: &Temp,
     command: &'static str,
