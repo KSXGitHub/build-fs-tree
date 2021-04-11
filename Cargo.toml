@@ -3,3 +3,6 @@ members = [
   "src",
   "test",
 ]
+
+[profile.release]
+opt-level = "s"
