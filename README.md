@@ -107,7 +107,7 @@ _Pollute the current directory with filesystem tree as described in a YAML file:
 build-fs-tree pollute . < fs-tree.yaml
 ```
 
-## Packing Status
+## Packaging Status
 
 [![Packaging Status](https://repology.org/badge/vertical-allrepos/build-fs-tree.svg)](https://repology.org/project/build-fs-tree/versions)
 
