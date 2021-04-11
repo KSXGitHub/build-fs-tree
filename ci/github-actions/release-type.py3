@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 from os import environ
 import re
-import json
+import toml
 
 release_tag = environ.get('RELEASE_TAG', None)
 
@@ -13,21 +13,18 @@ tag_prefix = 'refs/tags/'
 if release_tag.startswith(tag_prefix):
   release_tag = release_tag.replace(tag_prefix, '', 1)
 
-with open('sync.json') as package_json:
-  data = json.load(package_json)
+def dict_path(data, head: str, *tail: str):
+  if type(data) != dict: raise ValueError('Not a dict', data)
+  value = data.get(head)
+  if not tail: return value
+  return dict_path(value, *tail)
 
-  if type(data) != dict:
-    print('::error Content of sync.json is not an object')
-    exit(1)
-
-  version = data.get('version', None)
-
-  if not version:
-    print('::error ::sync.json#version is required but missing')
-    exit(1)
+with open('src/Cargo.toml') as cargo_toml:
+  data = toml.load(cargo_toml)
+  version = dict_path(data, 'package', 'version')
 
   if version != release_tag:
-    print(f'::warning ::RELEASE_TAG ({release_tag}) does not match sync.json#version ({version})')
+    print(f'::warning ::RELEASE_TAG ({release_tag}) does not match /src/Cargo.toml#package.version ({version})')
     print('::set-output name=release_type::none')
     print('::set-output name=is_release::false')
     print('::set-output name=is_prerelease::false')
