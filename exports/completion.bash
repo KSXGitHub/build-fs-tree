@@ -19,8 +19,8 @@ _build-fs-tree() {
             help)
                 cmd+="__help"
                 ;;
-            pollute)
-                cmd+="__pollute"
+            populate)
+                cmd+="__populate"
                 ;;
             *)
                 ;;
@@ -29,7 +29,7 @@ _build-fs-tree() {
 
     case "${cmd}" in
         build-fs-tree)
-            opts=" -h -V  --help --version   create pollute help"
+            opts=" -h -V  --help --version   create populate help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -74,7 +74,7 @@ _build-fs-tree() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        build__fs__tree__pollute)
+        build__fs__tree__populate)
             opts=" -h -V  --help --version  <TARGET> "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )

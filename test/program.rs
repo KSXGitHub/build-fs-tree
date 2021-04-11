@@ -88,16 +88,16 @@ fn create() {
 }
 
 #[test]
-fn pollute() {
+fn populate() {
     let working_directory = Temp::new_dir().expect("create temporary directory");
 
     eprintln!("FIRST RUN");
-    let output = run_main_subcommand(&working_directory, "pollute", "TARGET", SAMPLE_YAML);
+    let output = run_main_subcommand(&working_directory, "populate", "TARGET", SAMPLE_YAML);
     assert_eq!(output, (true, Some(0), "".to_string(), "".to_string()));
     test_sample_tree(&working_directory.join("TARGET"));
 
     eprintln!("SECOND RUN");
-    let output = run_main_subcommand(&working_directory, "pollute", "TARGET", SAMPLE_YAML);
+    let output = run_main_subcommand(&working_directory, "populate", "TARGET", SAMPLE_YAML);
     assert_eq!(output, (true, Some(0), "".to_string(), "".to_string()));
     test_sample_tree(&working_directory.join("TARGET"));
 }

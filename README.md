@@ -61,7 +61,7 @@ tree.build(&".".into()).unwrap();
 
 ### The Program
 
-The name of the command is `build-fs-tree`. It has 2 subcommands: [`create`](#create) and [`pollute`](#pollute).
+The name of the command is `build-fs-tree`. It has 2 subcommands: [`create`](#create) and [`populate`](#populate).
 
 #### `create`
 
@@ -85,26 +85,26 @@ _Create a new filesystem tree from a YAML file:_
 build-fs-tree create root < fs-tree.yaml
 ```
 
-#### `pollute`
+#### `populate`
 
 This command reads YAML from stdin and either creates a new filesystem tree or add files and directories to an already existing directories. It is the CLI equivalent of [`MergeableFileSystemTree`](#mergeablefilesystemtree).
 
 _Create two text files in the current directory:_
 
 ```sh
-echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree pollute .
+echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree populate .
 ```
 
 _Create a text file and its parent directories:_
 
 ```sh
-echo '{ files/text-files/foo.txt: HELLO }' | build-fs-tree pollute .
+echo '{ files/text-files/foo.txt: HELLO }' | build-fs-tree populate .
 ```
 
-_Pollute the current directory with filesystem tree as described in a YAML file:_
+_Populate the current directory with filesystem tree as described in a YAML file:_
 
 ```sh
-build-fs-tree pollute . < fs-tree.yaml
+build-fs-tree populate . < fs-tree.yaml
 ```
 
 ## Packaging Status

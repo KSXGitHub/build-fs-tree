@@ -22,5 +22,5 @@ where
 pub type Run = fn(&PathBuf) -> Result<(), String>;
 /// Read a YAML from stdin and create a new filesystem tree.
 pub const CREATE: Run = run::<FileSystemTree<PathBuf, String>, PathBuf>;
-/// Read a YAML from stdin and pollute the target filesystem tree.
-pub const POLLUTE: Run = run::<MergeableFileSystemTree<PathBuf, String>, PathBuf>;
+/// Read a YAML from stdin and populate the target filesystem tree.
+pub const POPULATE: Run = run::<MergeableFileSystemTree<PathBuf, String>, PathBuf>;

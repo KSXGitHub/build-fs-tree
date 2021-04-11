@@ -37,7 +37,7 @@ _arguments "${_arguments_options[@]}" \
 ':TARGET:_files' \
 && ret=0
 ;;
-(pollute)
+(populate)
 _arguments "${_arguments_options[@]}" \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
@@ -63,7 +63,7 @@ esac
 _build-fs-tree_commands() {
     local commands; commands=(
         "create:Read YAML from stdin and create a new filesystem tree at <TARGET>. Merged paths are not allowed" \
-"pollute:Read YAML from stdin and pollute an existing filesystem tree at <TARGET>. Parent directories would be created if they are not already exist" \
+"populate:Read YAML from stdin and populate an existing filesystem tree at <TARGET>. Parent directories would be created if they are not already exist" \
 "help:Prints this message or the help of the given subcommand(s)" \
     )
     _describe -t commands 'build-fs-tree commands' commands "$@"
@@ -82,12 +82,12 @@ _build-fs-tree__help_commands() {
     )
     _describe -t commands 'build-fs-tree help commands' commands "$@"
 }
-(( $+functions[_build-fs-tree__pollute_commands] )) ||
-_build-fs-tree__pollute_commands() {
+(( $+functions[_build-fs-tree__populate_commands] )) ||
+_build-fs-tree__populate_commands() {
     local commands; commands=(
         
     )
-    _describe -t commands 'build-fs-tree pollute commands' commands "$@"
+    _describe -t commands 'build-fs-tree populate commands' commands "$@"
 }
 
 _build-fs-tree "$@"

@@ -1,4 +1,4 @@
-use super::{Args, Command, CREATE, POLLUTE};
+use super::{Args, Command, CREATE, POPULATE};
 use derive_more::{From, Into};
 use structopt_utilities::StructOptUtils;
 
@@ -19,7 +19,7 @@ impl App {
     pub fn run(self) -> Result<(), String> {
         match self.args.command {
             Command::Create { target } => CREATE(&target),
-            Command::Pollute { target } => POLLUTE(&target),
+            Command::Populate { target } => POPULATE(&target),
         }
     }
 }

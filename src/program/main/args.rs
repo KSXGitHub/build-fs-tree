@@ -21,13 +21,13 @@ use text_block_macros::text_block;
         "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree create foo-and-bar"
         ""
         "    Create two text files in the current directory"
-        "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree pollute ."
+        "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree populate ."
         ""
         "    Create a new filesystem tree from a YAML file"
         "    $ build-fs-tree create root < fs-tree.yaml"
         ""
-        "    Pollute the current directory with filesystem tree as described in a YAML file"
-        "    $ build-fs-tree pollute . < fs-tree.yaml"
+        "    Populate the current directory with filesystem tree as described in a YAML file"
+        "    $ build-fs-tree populate . < fs-tree.yaml"
     },
 )]
 pub struct Args {
@@ -70,23 +70,23 @@ pub enum Command {
     /// Invoke [`MergeableFileSystemTree::build`](crate::MergeableFileSystemTree).
     #[structopt(
         about = concat!(
-            "Read YAML from stdin and pollute an existing filesystem tree at <TARGET>. ",
+            "Read YAML from stdin and populate an existing filesystem tree at <TARGET>. ",
             "Parent directories would be created if they are not already exist",
         ),
 
         after_help = text_block! {
             "EXAMPLES:"
             "    Create two text files in the current directory"
-            "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree pollute ."
+            "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree populate ."
             ""
             "    Create a text file and its parent directories"
-            "    $ echo '{ files/text-files/foo.txt: HELLO }' | build-fs-tree pollute ."
+            "    $ echo '{ files/text-files/foo.txt: HELLO }' | build-fs-tree populate ."
             ""
-            "    Pollute the current directory with filesystem tree as described in a YAML file"
-            "    $ build-fs-tree pollute . < fs-tree.yaml"
+            "    Populate the current directory with filesystem tree as described in a YAML file"
+            "    $ build-fs-tree populate . < fs-tree.yaml"
         },
     )]
-    Pollute {
+    Populate {
         #[structopt(name = "TARGET")]
         target: PathBuf,
     },
