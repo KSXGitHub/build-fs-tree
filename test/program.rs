@@ -16,26 +16,6 @@ const TARGET_DIR: &str = if cfg!(debug_assertions) {
     "release"
 };
 
-/// Absolute path to the directory that stores all compilation artifacts.
-fn target_dir() -> PathBuf {
-    env!("CARGO_MANIFEST_DIR")
-        .pipe(PathBuf::from)
-        .parent()
-        .expect("parent of $CARGO_MANIFEST_DIR")
-        .join("target")
-        .join(TARGET_DIR)
-}
-
-/// The main command.
-fn main_command() -> Command {
-    target_dir()
-        .join("build-fs-tree")
-        .pipe(Command::new)
-        .with_stdin(Stdio::piped())
-        .with_stdout(Stdio::piped())
-        .with_stderr(Stdio::piped())
-}
-
 /// Run a subcommand of the main command.
 fn run_main_subcommand(
     working_directory: &Temp,
@@ -43,7 +23,17 @@ fn run_main_subcommand(
     target: &'static str,
     input: &'static str,
 ) -> (bool, Option<i32>, String, String) {
-    let mut child = main_command()
+    let mut child = env!("CARGO_MANIFEST_DIR")
+        .pipe(PathBuf::from)
+        .parent()
+        .expect("parent of $CARGO_MANIFEST_DIR")
+        .join("target")
+        .join(TARGET_DIR)
+        .join("build-fs-tree")
+        .pipe(Command::new)
+        .with_stdin(Stdio::piped())
+        .with_stdout(Stdio::piped())
+        .with_stderr(Stdio::piped())
         .with_current_dir(working_directory.as_path())
         .with_arg(command)
         .with_arg(target)
