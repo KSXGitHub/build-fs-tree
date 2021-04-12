@@ -50,6 +50,11 @@
 //! });
 //! tree.build(&".".into()).unwrap();
 //! ```
+//!
+//! # Serialization and Deserialization
+//!
+//! Both [`FileSystemTree`] and [`MergeableFileSystemTree`] implement [`serde::Deserialize`]
+//! and [`serde::Serialize`].
 
 mod build;
 mod macros;

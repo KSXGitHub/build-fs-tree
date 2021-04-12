@@ -59,6 +59,10 @@ let tree = MergeableFileSystemTree::<&str, &str>::from(dir! {
 tree.build(&".".into()).unwrap();
 ```
 
+#### Serialization and Deserialization
+
+Both `FileSystemTree` and `MergeableFileSystemTree` implement `serde::Deserialize` and `serde::Serialize`.
+
 ### The Program
 
 The name of the command is `build-fs-tree`. It has 2 subcommands: [`create`](#create) and [`populate`](#populate).
