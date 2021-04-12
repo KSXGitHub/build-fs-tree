@@ -16,7 +16,6 @@ keywords = [
   "tree",
   "yaml",
   "json",
-  "serde",
 ]
 categories = ["rust-patterns"]
 include = [
