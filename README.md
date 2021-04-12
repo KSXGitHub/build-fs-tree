@@ -111,6 +111,16 @@ build-fs-tree populate . < fs-tree.yaml
 
 [![Packaging Status](https://repology.org/badge/vertical-allrepos/build-fs-tree.svg)](https://repology.org/project/build-fs-tree/versions)
 
+## Frequently Asked Questions
+
+### Why YAML?
+
+It has the features I desired: Easy to read and write, multiline strings done right.
+
+### What about this cool configuration format?
+
+According to the UNIX philosophy, you may pipe your cool configuration format to a program that converts it to JSON (YAML is a superset of JSON) and then pipe the JSON output to `build-fs-tree`.
+
 ## License
 
 [MIT](https://git.io/JOkew) © [Hoàng Văn Khải](https://ksxgithub.github.io/).
