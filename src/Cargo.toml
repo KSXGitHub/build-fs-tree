@@ -16,7 +16,12 @@ keywords = [
   "tree",
   "yaml",
 ]
-categories = ["rust-patterns"]
+categories = [
+  "command-line-utilities",
+  "development-tools",
+  "filesystem",
+  "rust-patterns",
+]
 include = [
   "*.rs",
   "/Cargo.toml",
