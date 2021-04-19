@@ -11,7 +11,7 @@ macro_rules! test_case {
             type Tree = ::build_fs_tree::FileSystemTree<$key, $value>;
             let actual: Tree = sample_tree!();
             let expected: Tree = sample_tree();
-            ::std::assert_eq!(actual, expected);
+            ::pretty_assertions::assert_eq!(actual, expected);
         }
     };
 }
@@ -34,5 +34,5 @@ fn optional_commas() {
         "a" => file!("foo")
         "b" => file!("bar")
     };
-    ::std::assert_eq!(actual, expected);
+    ::pretty_assertions::assert_eq!(actual, expected);
 }
