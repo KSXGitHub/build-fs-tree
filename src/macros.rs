@@ -162,7 +162,7 @@ macro_rules! dir {
                 $value
             );
         )*
-        ::build_fs_tree::FileSystemTree::Directory(__directory_content)
+        $crate::FileSystemTree::Directory(__directory_content)
     }};
 }
 
@@ -200,6 +200,6 @@ macro_rules! dir {
 #[macro_export]
 macro_rules! file {
     ($content:expr) => {
-        ::build_fs_tree::FileSystemTree::File(::std::convert::From::from($content))
+        $crate::FileSystemTree::File(::std::convert::From::from($content))
     };
 }
