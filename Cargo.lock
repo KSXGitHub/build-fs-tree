@@ -390,9 +390,9 @@ dependencies = [
 
 [[package]]
 name = "text-block-macros"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3729d26ad7b50bf7a0efbde7312b7f18160b844a1ea5775b795ec8fe05299970"
+checksum = "7f8b59b4da1c1717deaf1de80f0179a9d8b4ac91c986d5fd9f4a8ff177b84049"
 
 [[package]]
 name = "textwrap"
