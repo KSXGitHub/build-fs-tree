@@ -45,7 +45,7 @@ path = "_cli/build-fs-tree-completions.rs"
 doc = false
 
 [dependencies]
-derive_more = "^0.99.13"
+derive_more = "^0.99.14"
 pipe-trait = "^0.3.2"
 serde_yaml = "^0.8.17"
 structopt = "^0.3.21"
