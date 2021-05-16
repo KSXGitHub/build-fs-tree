@@ -9,12 +9,12 @@ macro_rules! map_type {
 }
 
 map_type!(
-    #[doc = "Directory content of [`FileSystemTree`]."]
+    /// Directory content of [`FileSystemTree`].
     DirectoryContent = FileSystemTree
 );
 
 map_type!(
-    #[doc = "Directory content of [`MergeableFileSystemTree`]."]
+    /// Directory content of [`MergeableFileSystemTree`].
     MergeableDirectoryContent = MergeableFileSystemTree
 );
 
@@ -31,11 +31,11 @@ macro_rules! function {
 }
 
 function!(
-    #[doc = "Transmute a [`DirectoryContent`] into a [`MergeableDirectoryContent`]."]
+    /// Transmute a [`DirectoryContent`] into a [`MergeableDirectoryContent`].
     make_unmergeable_dir_content_mergeable :: DirectoryContent -> MergeableDirectoryContent
 );
 
 function!(
-    #[doc = "Transmute a [`MergeableDirectoryContent`] into a [`DirectoryContent`]."]
+    /// Transmute a [`MergeableDirectoryContent`] into a [`DirectoryContent`].
     make_mergeable_dir_content_unmergeable :: MergeableDirectoryContent -> DirectoryContent
 );
