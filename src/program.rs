@@ -1,5 +1,6 @@
 //! Components of the CLI programs.
 
+#[cfg(feature = "cli-completions")]
 pub mod completions;
 pub mod main;
 

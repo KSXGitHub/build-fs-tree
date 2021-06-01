@@ -8,6 +8,11 @@ build = false
 name = "private_test_utils"
 path = "lib.rs"
 
+[features]
+default = []
+cli = ["build-fs-tree/cli"]
+cli-completions = ["build-fs-tree/cli-completions"]
+
 [dependencies]
 pipe-trait = "^0.3.2"
 maplit = "^1.0.2"
@@ -24,3 +29,4 @@ features = ["derive"]
 
 [dependencies.build-fs-tree]
 path = "../src"
+default-features = false
