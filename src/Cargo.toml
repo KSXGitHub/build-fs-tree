@@ -37,20 +37,33 @@ doc = true
 [[bin]]
 name = "build-fs-tree"
 path = "_cli/build-fs-tree.rs"
+required-features = ["cli"]
 doc = false
 
 [[bin]]
 name = "build-fs-tree-completions"
 path = "_cli/build-fs-tree-completions.rs"
+required-features = ["cli-completions"]
 doc = false
+
+[features]
+default = []
+cli = ["structopt", "structopt-utilities"]
+cli-completions = ["cli"]
 
 [dependencies]
 derive_more = "^0.99.14"
 pipe-trait = "^0.3.2"
 serde_yaml = "^0.8.17"
-structopt = "^0.3.21"
-structopt-utilities = "^0.0.8"
 text-block-macros = "^0.1.1"
+
+[dependencies.structopt]
+version = "^0.3.21"
+optional = true
+
+[dependencies.structopt-utilities]
+version = "^0.0.8"
+optional = true
 
 [dependencies.serde]
 version = "^1.0.126"

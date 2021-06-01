@@ -1,3 +1,4 @@
+#![cfg(feature = "cli")]
 use build_fs_tree::program::{clap::Shell, main::Args, structopt::StructOpt};
 
 macro_rules! test_case {

@@ -39,16 +39,21 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
+          components: clippy
           override: 'true'
           default: 'true'
-
-      - name: Build
-        run: cargo build --locked
 
       - name: Test
         env:
           RUST_BACKTRACE: '1'
-        run: cargo test --no-fail-fast
+          FMT: 'false'
+          LINT: 'true'
+          DOC: 'true'
+          BUILD: 'true'
+          TEST: 'true'
+          BUILD_FLAGS: '--locked'
+          TEST_FLAGS: '--no-fail-fast'
+        run: ./test.sh
 
   clippy_check:
     name: Clippy
