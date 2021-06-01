@@ -1,3 +1,4 @@
+#![deny(warnings)]
 use build_fs_tree::*;
 use derive_more::{AsRef, Deref};
 use maplit::btreemap;

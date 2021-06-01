@@ -56,6 +56,8 @@
 //! Both [`FileSystemTree`] and [`MergeableFileSystemTree`] implement [`serde::Deserialize`]
 //! and [`serde::Serialize`].
 
+#![deny(warnings)]
+
 mod build;
 mod macros;
 mod node;
@@ -66,6 +68,7 @@ pub use macros::*;
 pub use node::*;
 pub use tree::*;
 
+#[cfg(feature = "cli")]
 pub mod program;
 
 pub use serde;
