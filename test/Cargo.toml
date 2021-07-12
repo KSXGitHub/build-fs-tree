@@ -19,7 +19,7 @@ maplit = "^1.0.2"
 text-block-macros = "^0.1.1"
 serde_yaml = "^0.8.17"
 pretty_assertions = "^0.7.2"
-derive_more = "^0.99.13"
+derive_more = "^0.99.16"
 rand = "^0.8.4"
 command-extra = "^1.0.0"
 
