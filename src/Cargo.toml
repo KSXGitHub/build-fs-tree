@@ -54,7 +54,7 @@ cli-completions = ["cli"]
 [dependencies]
 derive_more = "^0.99.16"
 pipe-trait = "^0.3.2"
-serde_yaml = "^0.8.17"
+serde_yaml = "^0.8.19"
 text-block-macros = "^0.1.1"
 
 [dependencies.structopt]
