@@ -93,6 +93,7 @@ jobs:
 
       - name: Use clippy to lint code
         env:
+          FMT: 'false'
           LINT: 'true'
           DOC: 'false'
           BUILD: 'false'
