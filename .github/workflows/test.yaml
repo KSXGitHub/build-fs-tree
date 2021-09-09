@@ -54,7 +54,7 @@ jobs:
           TEST_FLAGS: '--no-fail-fast'
         run: ./test.sh
 
-  doc_check:
+  doc:
     name: Doc
 
     runs-on: ${{ matrix.os }}
@@ -101,7 +101,7 @@ jobs:
           TEST: 'false'
         run: ./test.sh
 
-  clippy_check:
+  clippy:
     name: Clippy
 
     runs-on: ${{ matrix.os }}
@@ -147,7 +147,7 @@ jobs:
           TEST: 'false'
         run: ./test.sh
 
-  fmt_check:
+  fmt:
     name: Fmt
 
     runs-on: ${{ matrix.os }}
