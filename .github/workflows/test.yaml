@@ -92,11 +92,12 @@ jobs:
           default: 'true'
 
       - name: Use clippy to lint code
-        uses: actions-rs/clippy-check@v1
-        with:
-          name: Clippy Report (${{ hashFiles('rust-toolchain') }}, ${{ matrix.os }})
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --all-features --all-targets -- -D warnings
+        env:
+          LINT: 'true'
+          DOC: 'false'
+          BUILD: 'false'
+          TEST: 'false'
+        run: ./test.sh
 
   fmt_check:
     name: Fmt
