@@ -46,8 +46,8 @@ jobs:
         env:
           RUST_BACKTRACE: '1'
           FMT: 'false'
-          LINT: 'true'
-          DOC: 'true'
+          LINT: 'false'
+          DOC: 'false'
           BUILD: 'true'
           TEST: 'true'
           BUILD_FLAGS: '--locked'
