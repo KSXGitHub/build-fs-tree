@@ -66,5 +66,5 @@ version = "^0.1.0"
 optional = true
 
 [dependencies.serde]
-version = "^1.0.132"
+version = "^1.0.133"
 features = ["derive"]
