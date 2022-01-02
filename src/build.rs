@@ -28,7 +28,7 @@ where
     fn build(self, path: &Self::Path) -> Result<(), BuildError<Self::Path, Error>> {
         let children = match self.read() {
             NodeContent::File(content) => {
-                return Self::write_file(&path, &content).map_err(|error| BuildError {
+                return Self::write_file(path, &content).map_err(|error| BuildError {
                     operation: FailedOperation::WriteFile,
                     path: path.clone(),
                     error,
@@ -37,14 +37,14 @@ where
             NodeContent::Directory(children) => children,
         };
 
-        Self::create_dir(&path).map_err(|error| BuildError {
+        Self::create_dir(path).map_err(|error| BuildError {
             operation: FailedOperation::CreateDir,
             path: path.clone(),
             error,
         })?;
 
         for (name, child) in children {
-            child.build(&Self::join(&path, &name))?;
+            child.build(&Self::join(path, &name))?;
         }
 
         Ok(())
