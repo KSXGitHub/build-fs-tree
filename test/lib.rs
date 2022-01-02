@@ -19,7 +19,7 @@ use FileSystemTree::{Directory, File};
 
 /// Representation of a temporary filesystem item.
 ///
-/// **NOTE:** Delete this once https://github.com/samgiles/rs-mktemp/issues/8 is resolved.
+/// **NOTE:** Delete this once <https://github.com/samgiles/rs-mktemp/issues/8> is resolved.
 #[derive(Debug, AsRef, Deref)]
 pub struct Temp(PathBuf);
 
