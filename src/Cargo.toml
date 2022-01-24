@@ -58,7 +58,7 @@ serde_yaml = "^0.8.23"
 text-block-macros = "^0.1.1"
 
 [dependencies.structopt]
-version = "^0.3.25"
+version = "^0.3.26"
 optional = true
 
 [dependencies.structopt-utilities]
