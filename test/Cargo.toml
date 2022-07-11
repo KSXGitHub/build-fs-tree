@@ -24,7 +24,7 @@ rand = "^0.8.5"
 command-extra = "^1.0.0"
 
 [dependencies.serde]
-version = "^1.0.138"
+version = "^1.0.139"
 features = ["derive"]
 
 [dependencies.build-fs-tree]
