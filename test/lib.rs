@@ -131,7 +131,7 @@ pub fn read_text_file(path: impl AsRef<Path>) -> String {
 #[macro_export]
 macro_rules! assert_dir {
     ($path:expr, $expected:expr $(,)?) => {
-        match (crate::list_children_names($path), $expected) {
+        match ($crate::list_children_names($path), $expected) {
             (actual, expected) => {
                 eprintln!("CASE: {} => {}", stringify!($path), stringify!($expected));
                 dbg!(&actual, &expected);
@@ -151,7 +151,7 @@ macro_rules! assert_dir {
 #[macro_export]
 macro_rules! assert_file {
     ($path:expr, $expected:expr $(,)?) => {
-        match (crate::read_text_file($path), $expected) {
+        match ($crate::read_text_file($path), $expected) {
             (actual, expected) => {
                 eprintln!("CASE: {} => {}", stringify!($path), stringify!($expected));
                 dbg!(&actual, &expected);
