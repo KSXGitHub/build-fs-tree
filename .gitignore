@@ -1,4 +1,5 @@
 /target
+/.vscode
 tmp
 *.tmp
 tmp.*
