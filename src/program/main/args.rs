@@ -9,6 +9,8 @@ use text_block_macros::text_block;
     name = "build-fs-tree",
     color = ColorChoice::Never,
 
+    about = "Create a filesystem tree from YAML",
+
     long_about = text_block! {
         "Create a filesystem tree from YAML"
         ""
@@ -18,6 +20,14 @@ use text_block_macros::text_block;
     },
 
     after_help = text_block! {
+        "EXAMPLES:"
+        "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree create foo-and-bar"
+        "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree populate ."
+        "    $ build-fs-tree create root < fs-tree.yaml"
+        "    $ build-fs-tree populate . < fs-tree.yaml"
+    },
+
+    after_long_help = text_block! {
         "EXAMPLES:"
         "    Create two text files in a new directory"
         "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree create foo-and-bar"
@@ -47,12 +57,21 @@ pub struct Args {
 pub enum Command {
     /// Invoke [`FileSystemTree::build`](crate::FileSystemTree).
     #[clap(
-        about = concat!(
+        about = "Read YAML from stdin and create a new filesystem tree at <TARGET>",
+
+        long_about = concat!(
             "Read YAML from stdin and create a new filesystem tree at <TARGET>. ",
             "Merged paths are not allowed",
         ),
 
         after_help = text_block! {
+            "EXAMPLES:"
+            "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree create foo-and-bar"
+            "    $ echo '{ text-files: { foo.txt: HELLO } }' | build-fs-tree create files"
+            "    $ build-fs-tree create root < fs-tree.yaml"
+        },
+
+        after_long_help = text_block! {
             "EXAMPLES:"
             "    Create two text files in a new directory"
             "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree create foo-and-bar"
@@ -71,12 +90,21 @@ pub enum Command {
 
     /// Invoke [`MergeableFileSystemTree::build`](crate::MergeableFileSystemTree).
     #[clap(
-        about = concat!(
+        about = "Read YAML from stdin and populate an existing filesystem tree at <TARGET>",
+
+        long_about = concat!(
             "Read YAML from stdin and populate an existing filesystem tree at <TARGET>. ",
             "Parent directories would be created if they are not already exist",
         ),
 
         after_help = text_block! {
+            "EXAMPLES:"
+            "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree populate ."
+            "    $ echo '{ files/text-files/foo.txt: HELLO }' | build-fs-tree populate ."
+            "    $ build-fs-tree populate . < fs-tree.yaml"
+        },
+
+        after_long_help = text_block! {
             "EXAMPLES:"
             "    Create two text files in the current directory"
             "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree populate ."
