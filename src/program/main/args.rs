@@ -57,7 +57,7 @@ pub struct Args {
 pub enum Command {
     /// Invoke [`FileSystemTree::build`](crate::FileSystemTree).
     #[clap(
-        about = "Read YAML from stdin and create a new filesystem tree at <TARGET>",
+        about = "Read YAML from stdin and create a new filesystem tree",
 
         long_about = concat!(
             "Read YAML from stdin and create a new filesystem tree at <TARGET>. ",
@@ -90,7 +90,7 @@ pub enum Command {
 
     /// Invoke [`MergeableFileSystemTree::build`](crate::MergeableFileSystemTree).
     #[clap(
-        about = "Read YAML from stdin and populate an existing filesystem tree at <TARGET>",
+        about = "Read YAML from stdin and populate an existing filesystem tree",
 
         long_about = concat!(
             "Read YAML from stdin and populate an existing filesystem tree at <TARGET>. ",
