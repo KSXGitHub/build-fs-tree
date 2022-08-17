@@ -10,13 +10,15 @@ pub use args::*;
 pub use error::*;
 pub use run::*;
 
+use std::process::ExitCode;
+
 /// The main program.
-pub fn main() -> ! {
-    std::process::exit(match App::from_env().run() {
-        Ok(()) => 0,
+pub fn main() -> ExitCode {
+    match App::from_env().run() {
+        Ok(()) => ExitCode::SUCCESS,
         Err(error_message) => {
             eprintln!("{}", error_message);
-            1
+            ExitCode::FAILURE
         }
-    })
+    }
 }

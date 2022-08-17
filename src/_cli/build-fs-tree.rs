@@ -1,5 +1,5 @@
 #![doc(hidden)]
 
-fn main() -> ! {
+fn main() -> std::process::ExitCode {
     build_fs_tree::program::main::main()
 }
