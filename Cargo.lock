@@ -45,6 +45,7 @@ dependencies = [
  "serde",
  "serde_yaml",
  "text-block-macros",
+ "thiserror",
 ]
 
 [[package]]

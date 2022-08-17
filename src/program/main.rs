@@ -2,10 +2,12 @@
 
 mod app;
 mod args;
+mod error;
 mod run;
 
 pub use app::*;
 pub use args::*;
+pub use error::*;
 pub use run::*;
 
 /// The main program.

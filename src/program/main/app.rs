@@ -1,6 +1,7 @@
-use super::{Args, Command, CREATE, POPULATE};
+use super::{Args, Command, RuntimeError, CREATE, POPULATE};
 use clap::Parser;
 use derive_more::{From, Into};
+use std::path::PathBuf;
 
 /// The main application.
 #[derive(Debug, From, Into)]
@@ -16,7 +17,7 @@ impl App {
     }
 
     /// Run the application.
-    pub fn run(self) -> Result<(), String> {
+    pub fn run(self) -> Result<(), RuntimeError<PathBuf>> {
         match self.args.command {
             Command::Create { target } => CREATE(&target),
             Command::Populate { target } => POPULATE(&target),
