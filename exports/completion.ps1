@@ -25,8 +25,8 @@ Register-ArgumentCompleter -Native -CommandName 'build-fs-tree' -ScriptBlock {
             [CompletionResult]::new('--help', 'help', [CompletionResultType]::ParameterName, 'Print help information')
             [CompletionResult]::new('-V', 'V', [CompletionResultType]::ParameterName, 'Print version information')
             [CompletionResult]::new('--version', 'version', [CompletionResultType]::ParameterName, 'Print version information')
-            [CompletionResult]::new('create', 'create', [CompletionResultType]::ParameterValue, 'Read YAML from stdin and create a new filesystem tree at <TARGET>. Merged paths are not allowed')
-            [CompletionResult]::new('populate', 'populate', [CompletionResultType]::ParameterValue, 'Read YAML from stdin and populate an existing filesystem tree at <TARGET>. Parent directories would be created if they are not already exist')
+            [CompletionResult]::new('create', 'create', [CompletionResultType]::ParameterValue, 'Read YAML from stdin and create a new filesystem tree')
+            [CompletionResult]::new('populate', 'populate', [CompletionResultType]::ParameterValue, 'Read YAML from stdin and populate an existing filesystem tree')
             [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
             break
         }

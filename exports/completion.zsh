@@ -55,8 +55,8 @@ esac
 (( $+functions[_build-fs-tree_commands] )) ||
 _build-fs-tree_commands() {
     local commands; commands=(
-'create:Read YAML from stdin and create a new filesystem tree at <TARGET>. Merged paths are not allowed' \
-'populate:Read YAML from stdin and populate an existing filesystem tree at <TARGET>. Parent directories would be created if they are not already exist' \
+'create:Read YAML from stdin and create a new filesystem tree' \
+'populate:Read YAML from stdin and populate an existing filesystem tree' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'build-fs-tree commands' commands "$@"

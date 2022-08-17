@@ -22,8 +22,8 @@ set edit:completion:arg-completer[build-fs-tree] = {|@words|
             cand --help 'Print help information'
             cand -V 'Print version information'
             cand --version 'Print version information'
-            cand create 'Read YAML from stdin and create a new filesystem tree at <TARGET>. Merged paths are not allowed'
-            cand populate 'Read YAML from stdin and populate an existing filesystem tree at <TARGET>. Parent directories would be created if they are not already exist'
+            cand create 'Read YAML from stdin and create a new filesystem tree'
+            cand populate 'Read YAML from stdin and populate an existing filesystem tree'
             cand help 'Print this message or the help of the given subcommand(s)'
         }
         &'build-fs-tree;create'= {
