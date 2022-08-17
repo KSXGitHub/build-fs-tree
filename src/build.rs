@@ -5,6 +5,7 @@ mod impl_tree;
 pub use error::*;
 
 use crate::{Node, NodeContent};
+use std::fmt::{Debug, Display};
 
 /// Applying [`FileSystemTree`](crate::FileSystemTree) to the filesystem.
 ///
@@ -14,9 +15,10 @@ use crate::{Node, NodeContent};
 pub trait Build<Name, Error>: Node + Sized
 where
     Self::DirectoryContent: IntoIterator<Item = (Name, Self)>,
+    Error: Display,
 {
     /// Locations of the items in the filesystem.
-    type Path: Clone;
+    type Path: Debug + Clone;
     /// Add prefix to the root of the tree.
     fn join(prefix: &Self::Path, name: &Name) -> Self::Path;
     /// Write content to a file.

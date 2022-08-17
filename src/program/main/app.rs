@@ -1,6 +1,7 @@
-use super::{Args, Command, CREATE, POPULATE};
+use super::{Args, Command, RuntimeError, CREATE, POPULATE};
+use clap::Parser;
 use derive_more::{From, Into};
-use structopt_utilities::StructOptUtils;
+use std::path::PathBuf;
 
 /// The main application.
 #[derive(Debug, From, Into)]
@@ -12,11 +13,11 @@ pub struct App {
 impl App {
     /// Initialize the application from environment parameters.
     pub fn from_env() -> Self {
-        Args::strict_from_args().into()
+        Args::parse().into()
     }
 
     /// Run the application.
-    pub fn run(self) -> Result<(), String> {
+    pub fn run(self) -> Result<(), RuntimeError<PathBuf>> {
         match self.args.command {
             Command::Create { target } => CREATE(&target),
             Command::Populate { target } => POPULATE(&target),

@@ -4,5 +4,6 @@
 pub mod completions;
 pub mod main;
 
-pub use structopt;
-pub use structopt::clap;
+pub use clap;
+pub use clap_utilities;
+pub use clap_utilities::clap_complete;
