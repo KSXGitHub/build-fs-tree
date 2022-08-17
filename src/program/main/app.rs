@@ -1,6 +1,6 @@
 use super::{Args, Command, CREATE, POPULATE};
+use clap::Parser;
 use derive_more::{From, Into};
-use structopt_utilities::StructOptUtils;
 
 /// The main application.
 #[derive(Debug, From, Into)]
@@ -12,7 +12,7 @@ pub struct App {
 impl App {
     /// Initialize the application from environment parameters.
     pub fn from_env() -> Self {
-        Args::strict_from_args().into()
+        Args::parse().into()
     }
 
     /// Run the application.

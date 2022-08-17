@@ -1,11 +1,13 @@
+use clap::{ColorChoice, Parser, Subcommand};
 use std::path::PathBuf;
-use structopt::StructOpt;
 use text_block_macros::text_block;
 
 /// Parse result of CLI arguments.
-#[derive(Debug, StructOpt)]
-#[structopt(
+#[derive(Debug, Parser)]
+#[clap(
+    version,
     name = "build-fs-tree",
+    color = ColorChoice::Never,
 
     long_about = text_block! {
         "Create a filesystem tree from YAML"
@@ -37,14 +39,14 @@ pub struct Args {
 }
 
 /// Subcommands of the program.
-#[derive(Debug, StructOpt)]
-#[structopt(
+#[derive(Debug, Subcommand)]
+#[clap(
     rename_all = "kebab-case",
     about = "Create a filesystem tree from YAML"
 )]
 pub enum Command {
     /// Invoke [`FileSystemTree::build`](crate::FileSystemTree).
-    #[structopt(
+    #[clap(
         about = concat!(
             "Read YAML from stdin and create a new filesystem tree at <TARGET>. ",
             "Merged paths are not allowed",
@@ -63,12 +65,12 @@ pub enum Command {
         },
     )]
     Create {
-        #[structopt(name = "TARGET")]
+        #[clap(name = "TARGET")]
         target: PathBuf,
     },
 
     /// Invoke [`MergeableFileSystemTree::build`](crate::MergeableFileSystemTree).
-    #[structopt(
+    #[clap(
         about = concat!(
             "Read YAML from stdin and populate an existing filesystem tree at <TARGET>. ",
             "Parent directories would be created if they are not already exist",
@@ -87,7 +89,7 @@ pub enum Command {
         },
     )]
     Populate {
-        #[structopt(name = "TARGET")]
+        #[clap(name = "TARGET")]
         target: PathBuf,
     },
 }

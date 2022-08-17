@@ -15,10 +15,10 @@ _build-fs-tree() {
 
     local context curcontext="$curcontext" state line
     _arguments "${_arguments_options[@]}" \
-'-h[Prints help information]' \
-'--help[Prints help information]' \
-'-V[Prints version information]' \
-'--version[Prints version information]' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+'-V[Print version information]' \
+'--version[Print version information]' \
 ":: :_build-fs-tree_commands" \
 "*::: :->build-fs-tree" \
 && ret=0
@@ -30,28 +30,21 @@ _build-fs-tree() {
         case $line[1] in
             (create)
 _arguments "${_arguments_options[@]}" \
-'-h[Prints help information]' \
-'--help[Prints help information]' \
-'-V[Prints version information]' \
-'--version[Prints version information]' \
-':TARGET:_files' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+':TARGET:' \
 && ret=0
 ;;
 (populate)
 _arguments "${_arguments_options[@]}" \
-'-h[Prints help information]' \
-'--help[Prints help information]' \
-'-V[Prints version information]' \
-'--version[Prints version information]' \
-':TARGET:_files' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+':TARGET:' \
 && ret=0
 ;;
 (help)
 _arguments "${_arguments_options[@]}" \
-'-h[Prints help information]' \
-'--help[Prints help information]' \
-'-V[Prints version information]' \
-'--version[Prints version information]' \
+'*::subcommand -- The subcommand whose help message to display:' \
 && ret=0
 ;;
         esac
@@ -62,31 +55,25 @@ esac
 (( $+functions[_build-fs-tree_commands] )) ||
 _build-fs-tree_commands() {
     local commands; commands=(
-        "create:Read YAML from stdin and create a new filesystem tree at <TARGET>. Merged paths are not allowed" \
-"populate:Read YAML from stdin and populate an existing filesystem tree at <TARGET>. Parent directories would be created if they are not already exist" \
-"help:Prints this message or the help of the given subcommand(s)" \
+'create:Read YAML from stdin and create a new filesystem tree at <TARGET>. Merged paths are not allowed' \
+'populate:Read YAML from stdin and populate an existing filesystem tree at <TARGET>. Parent directories would be created if they are not already exist' \
+'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'build-fs-tree commands' commands "$@"
 }
 (( $+functions[_build-fs-tree__create_commands] )) ||
 _build-fs-tree__create_commands() {
-    local commands; commands=(
-        
-    )
+    local commands; commands=()
     _describe -t commands 'build-fs-tree create commands' commands "$@"
 }
 (( $+functions[_build-fs-tree__help_commands] )) ||
 _build-fs-tree__help_commands() {
-    local commands; commands=(
-        
-    )
+    local commands; commands=()
     _describe -t commands 'build-fs-tree help commands' commands "$@"
 }
 (( $+functions[_build-fs-tree__populate_commands] )) ||
 _build-fs-tree__populate_commands() {
-    local commands; commands=(
-        
-    )
+    local commands; commands=()
     _describe -t commands 'build-fs-tree populate commands' commands "$@"
 }
 

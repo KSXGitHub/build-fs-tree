@@ -5,7 +5,7 @@ cd "$(dirname "$0")"
 mkdir -p exports
 
 gen() {
-  ./run.sh build-fs-tree-completions "$1" -o "exports/$2"
+  ./run.sh build-fs-tree-completions --name='build-fs-tree' --shell="$1" --output="exports/$2"
 }
 
 gen bash completion.bash

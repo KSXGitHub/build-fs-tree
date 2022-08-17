@@ -9,10 +9,9 @@ _build-fs-tree() {
     for i in ${COMP_WORDS[@]}
     do
         case "${i}" in
-            build-fs-tree)
-                cmd="build-fs-tree"
+            "$1")
+                cmd="build__fs__tree"
                 ;;
-            
             create)
                 cmd+="__create"
                 ;;
@@ -28,14 +27,13 @@ _build-fs-tree() {
     done
 
     case "${cmd}" in
-        build-fs-tree)
-            opts=" -h -V  --help --version   create populate help"
+        build__fs__tree)
+            opts="-h -V --help --version create populate help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
-                
                 *)
                     COMPREPLY=()
                     ;;
@@ -43,15 +41,13 @@ _build-fs-tree() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        
         build__fs__tree__create)
-            opts=" -h -V  --help --version  <TARGET> "
+            opts="-h --help <TARGET>"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
-                
                 *)
                     COMPREPLY=()
                     ;;
@@ -60,13 +56,12 @@ _build-fs-tree() {
             return 0
             ;;
         build__fs__tree__help)
-            opts=" -h -V  --help --version  "
+            opts="<SUBCOMMAND>..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
-                
                 *)
                     COMPREPLY=()
                     ;;
@@ -75,13 +70,12 @@ _build-fs-tree() {
             return 0
             ;;
         build__fs__tree__populate)
-            opts=" -h -V  --help --version  <TARGET> "
+            opts="-h --help <TARGET>"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
-                
                 *)
                     COMPREPLY=()
                     ;;
