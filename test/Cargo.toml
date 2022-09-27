@@ -22,5 +22,5 @@ pretty_assertions = "^1.3.0"
 derive_more = "^0.99.17"
 rand = "^0.8.5"
 command-extra = "^1.0.0"
-serde = { version = "^1.0.144", features = ["derive"] }
+serde = { version = "^1.0.145", features = ["derive"] }
 build-fs-tree = { path = "../src", default-features = false }
