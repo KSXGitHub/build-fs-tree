@@ -53,7 +53,7 @@ cli-completions = ["cli"]
 
 [dependencies]
 derive_more = "^0.99.17"
-thiserror = "^1.0.36"
+thiserror = "^1.0.37"
 pipe-trait = "^0.4.0"
 serde_yaml = "^0.9.13"
 text-block-macros = "^0.1.1"
