@@ -15,8 +15,8 @@ _build-fs-tree() {
 
     local context curcontext="$curcontext" state line
     _arguments "${_arguments_options[@]}" \
-'-h[Print help information]' \
-'--help[Print help information]' \
+'-h[Print help information (use `--help` for more detail)]' \
+'--help[Print help information (use `--help` for more detail)]' \
 '-V[Print version information]' \
 '--version[Print version information]' \
 ":: :_build-fs-tree_commands" \
@@ -30,22 +30,45 @@ _build-fs-tree() {
         case $line[1] in
             (create)
 _arguments "${_arguments_options[@]}" \
-'-h[Print help information]' \
-'--help[Print help information]' \
-':TARGET:' \
+'-h[Print help information (use `--help` for more detail)]' \
+'--help[Print help information (use `--help` for more detail)]' \
+':TARGET:_files' \
 && ret=0
 ;;
 (populate)
 _arguments "${_arguments_options[@]}" \
-'-h[Print help information]' \
-'--help[Print help information]' \
-':TARGET:' \
+'-h[Print help information (use `--help` for more detail)]' \
+'--help[Print help information (use `--help` for more detail)]' \
+':TARGET:_files' \
 && ret=0
 ;;
 (help)
 _arguments "${_arguments_options[@]}" \
-'*::subcommand -- The subcommand whose help message to display:' \
+":: :_build-fs-tree__help_commands" \
+"*::: :->help" \
 && ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:build-fs-tree-help-command-$line[1]:"
+        case $line[1] in
+            (create)
+_arguments "${_arguments_options[@]}" \
+&& ret=0
+;;
+(populate)
+_arguments "${_arguments_options[@]}" \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" \
+&& ret=0
+;;
+        esac
+    ;;
+esac
 ;;
         esac
     ;;
@@ -66,10 +89,29 @@ _build-fs-tree__create_commands() {
     local commands; commands=()
     _describe -t commands 'build-fs-tree create commands' commands "$@"
 }
+(( $+functions[_build-fs-tree__help__create_commands] )) ||
+_build-fs-tree__help__create_commands() {
+    local commands; commands=()
+    _describe -t commands 'build-fs-tree help create commands' commands "$@"
+}
 (( $+functions[_build-fs-tree__help_commands] )) ||
 _build-fs-tree__help_commands() {
-    local commands; commands=()
+    local commands; commands=(
+'create:Read YAML from stdin and create a new filesystem tree' \
+'populate:Read YAML from stdin and populate an existing filesystem tree' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
     _describe -t commands 'build-fs-tree help commands' commands "$@"
+}
+(( $+functions[_build-fs-tree__help__help_commands] )) ||
+_build-fs-tree__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'build-fs-tree help help commands' commands "$@"
+}
+(( $+functions[_build-fs-tree__help__populate_commands] )) ||
+_build-fs-tree__help__populate_commands() {
+    local commands; commands=()
+    _describe -t commands 'build-fs-tree help populate commands' commands "$@"
 }
 (( $+functions[_build-fs-tree__populate_commands] )) ||
 _build-fs-tree__populate_commands() {

@@ -18,8 +18,8 @@ set edit:completion:arg-completer[build-fs-tree] = {|@words|
     }
     var completions = [
         &'build-fs-tree'= {
-            cand -h 'Print help information'
-            cand --help 'Print help information'
+            cand -h 'Print help information (use `--help` for more detail)'
+            cand --help 'Print help information (use `--help` for more detail)'
             cand -V 'Print version information'
             cand --version 'Print version information'
             cand create 'Read YAML from stdin and create a new filesystem tree'
@@ -27,14 +27,23 @@ set edit:completion:arg-completer[build-fs-tree] = {|@words|
             cand help 'Print this message or the help of the given subcommand(s)'
         }
         &'build-fs-tree;create'= {
-            cand -h 'Print help information'
-            cand --help 'Print help information'
+            cand -h 'Print help information (use `--help` for more detail)'
+            cand --help 'Print help information (use `--help` for more detail)'
         }
         &'build-fs-tree;populate'= {
-            cand -h 'Print help information'
-            cand --help 'Print help information'
+            cand -h 'Print help information (use `--help` for more detail)'
+            cand --help 'Print help information (use `--help` for more detail)'
         }
         &'build-fs-tree;help'= {
+            cand create 'Read YAML from stdin and create a new filesystem tree'
+            cand populate 'Read YAML from stdin and populate an existing filesystem tree'
+            cand help 'Print this message or the help of the given subcommand(s)'
+        }
+        &'build-fs-tree;help;create'= {
+        }
+        &'build-fs-tree;help;populate'= {
+        }
+        &'build-fs-tree;help;help'= {
         }
     ]
     $completions[$command]

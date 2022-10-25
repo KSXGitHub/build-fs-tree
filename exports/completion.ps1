@@ -21,8 +21,8 @@ Register-ArgumentCompleter -Native -CommandName 'build-fs-tree' -ScriptBlock {
 
     $completions = @(switch ($command) {
         'build-fs-tree' {
-            [CompletionResult]::new('-h', 'h', [CompletionResultType]::ParameterName, 'Print help information')
-            [CompletionResult]::new('--help', 'help', [CompletionResultType]::ParameterName, 'Print help information')
+            [CompletionResult]::new('-h', 'h', [CompletionResultType]::ParameterName, 'Print help information (use `--help` for more detail)')
+            [CompletionResult]::new('--help', 'help', [CompletionResultType]::ParameterName, 'Print help information (use `--help` for more detail)')
             [CompletionResult]::new('-V', 'V', [CompletionResultType]::ParameterName, 'Print version information')
             [CompletionResult]::new('--version', 'version', [CompletionResultType]::ParameterName, 'Print version information')
             [CompletionResult]::new('create', 'create', [CompletionResultType]::ParameterValue, 'Read YAML from stdin and create a new filesystem tree')
@@ -31,16 +31,28 @@ Register-ArgumentCompleter -Native -CommandName 'build-fs-tree' -ScriptBlock {
             break
         }
         'build-fs-tree;create' {
-            [CompletionResult]::new('-h', 'h', [CompletionResultType]::ParameterName, 'Print help information')
-            [CompletionResult]::new('--help', 'help', [CompletionResultType]::ParameterName, 'Print help information')
+            [CompletionResult]::new('-h', 'h', [CompletionResultType]::ParameterName, 'Print help information (use `--help` for more detail)')
+            [CompletionResult]::new('--help', 'help', [CompletionResultType]::ParameterName, 'Print help information (use `--help` for more detail)')
             break
         }
         'build-fs-tree;populate' {
-            [CompletionResult]::new('-h', 'h', [CompletionResultType]::ParameterName, 'Print help information')
-            [CompletionResult]::new('--help', 'help', [CompletionResultType]::ParameterName, 'Print help information')
+            [CompletionResult]::new('-h', 'h', [CompletionResultType]::ParameterName, 'Print help information (use `--help` for more detail)')
+            [CompletionResult]::new('--help', 'help', [CompletionResultType]::ParameterName, 'Print help information (use `--help` for more detail)')
             break
         }
         'build-fs-tree;help' {
+            [CompletionResult]::new('create', 'create', [CompletionResultType]::ParameterValue, 'Read YAML from stdin and create a new filesystem tree')
+            [CompletionResult]::new('populate', 'populate', [CompletionResultType]::ParameterValue, 'Read YAML from stdin and populate an existing filesystem tree')
+            [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
+            break
+        }
+        'build-fs-tree;help;create' {
+            break
+        }
+        'build-fs-tree;help;populate' {
+            break
+        }
+        'build-fs-tree;help;help' {
             break
         }
     })
