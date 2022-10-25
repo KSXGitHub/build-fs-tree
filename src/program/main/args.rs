@@ -20,7 +20,7 @@ use text_block_macros::text_block;
     },
 
     after_help = text_block! {
-        "EXAMPLES:"
+        "Examples:"
         "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree create foo-and-bar"
         "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree populate ."
         "    $ build-fs-tree create root < fs-tree.yaml"
@@ -28,7 +28,7 @@ use text_block_macros::text_block;
     },
 
     after_long_help = text_block! {
-        "EXAMPLES:"
+        "Examples:"
         "    Create two text files in a new directory"
         "    $ echo '{ foo.txt: HELLO, bar.txt: WORLD }' | build-fs-tree create foo-and-bar"
         ""
