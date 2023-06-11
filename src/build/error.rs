@@ -14,7 +14,7 @@ pub struct BuildError<Path, Error> {
     pub error: Error,
 }
 
-/// Operation that causes an error
+/// Operation that causes an error.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum FailedOperation {
     /// The operation was to write a file.
