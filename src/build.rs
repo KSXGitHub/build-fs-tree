@@ -20,7 +20,7 @@ where
     /// Build target.
     type BorrowedPath: Debug + ToOwned<Owned = Self::OwnedPath> + ?Sized;
     /// Locations of the items in the filesystem.
-    type OwnedPath: Debug + Clone + AsRef<Self::BorrowedPath>;
+    type OwnedPath: Debug + AsRef<Self::BorrowedPath>;
     /// Add prefix to the root of the tree.
     fn join(prefix: &Self::BorrowedPath, name: &Name) -> Self::OwnedPath;
     /// Write content to a file.
