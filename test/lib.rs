@@ -114,7 +114,6 @@ macro_rules! string_set {
 pub fn list_children_names(path: impl AsRef<Path>) -> collections::BTreeSet<String> {
     read_dir(path)
         .expect("read_dir")
-        .into_iter()
         .filter_map(Result::ok)
         .map(|entry| entry.file_name())
         .map(OsString::into_string)
