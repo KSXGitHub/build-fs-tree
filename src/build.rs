@@ -5,7 +5,6 @@ mod impl_tree;
 pub use error::*;
 
 use crate::{Node, NodeContent};
-use std::fmt::Display;
 
 /// Applying [`FileSystemTree`](crate::FileSystemTree) to the filesystem.
 ///
@@ -15,7 +14,6 @@ use std::fmt::Display;
 pub trait Build<Name, Error>: Node + Sized
 where
     Self::DirectoryContent: IntoIterator<Item = (Name, Self)>,
-    Error: Display,
 {
     /// Build target.
     type BorrowedPath: ToOwned<Owned = Self::OwnedPath> + ?Sized;
