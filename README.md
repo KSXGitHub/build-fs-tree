@@ -34,7 +34,7 @@ let tree: FileSystemTree<&str, &str> = dir! {
         "style.css" => file!(r#":root { color: red; }"#)
     }
 };
-tree.build(&"public".into()).unwrap();
+tree.build("public").unwrap();
 ```
 
 #### `MergeableFileSystemTree`
@@ -56,7 +56,7 @@ let tree = MergeableFileSystemTree::<&str, &str>::from(dir! {
         "scripts/style.css" => file!(r#":root { color: red; }"#)
     }
 });
-tree.build(&".".into()).unwrap();
+tree.build(".").unwrap();
 ```
 
 #### Serialization and Deserialization
