@@ -4,7 +4,6 @@ use pipe_trait::Pipe;
 use serde::de::DeserializeOwned;
 use serde_yaml::from_reader;
 use std::{
-    fmt::Debug,
     io,
     path::{Path, PathBuf},
 };
@@ -13,12 +12,12 @@ use std::{
 pub fn run<Tree, Path>(target: &Path) -> Result<(), RuntimeError<Path::Owned>>
 where
     Path: ToOwned + AsRef<Path> + ?Sized,
-    Path::Owned: AsRef<Path> + Debug,
+    Path::Owned: AsRef<Path>,
     Tree: Build<Path::Owned, io::Error, BorrowedPath = Path, OwnedPath = Path::Owned>
         + Node
         + DeserializeOwned,
     Tree::DirectoryContent: IntoIterator<Item = (Path::Owned, Tree)>,
-    Path: Debug + Ord,
+    Path: Ord,
 {
     io::stdin()
         .pipe(from_reader::<_, Tree>)?
