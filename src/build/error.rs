@@ -4,6 +4,7 @@ use std::fmt::{self, Debug, Display, Formatter};
 /// Error caused by [`Build::build`](crate::Build::build).
 #[derive(Debug, Display, Clone, Copy, PartialEq, Eq, Error)]
 #[display(fmt = "{} {:?}: {}", operation, path, error)]
+#[display(bound = "Path: Debug, Error: Display")]
 pub struct BuildError<Path, Error> {
     /// Operation that caused the error.
     pub operation: FailedOperation,
