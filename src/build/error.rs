@@ -1,10 +1,10 @@
+use derive_more::{Display, Error};
 use std::fmt::{self, Debug, Display, Formatter};
-use thiserror::Error;
 
 /// Error caused by [`Build::build`](crate::Build::build).
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Error)]
-#[error("{} {:?}: {}", operation, path, error)]
-pub struct BuildError<Path: Debug, Error: Display> {
+#[derive(Debug, Display, Clone, Copy, PartialEq, Eq, Error)]
+#[display(fmt = "{} {:?}: {}", operation, path, error)]
+pub struct BuildError<Path, Error> {
     /// Operation that caused the error.
     pub operation: FailedOperation,
     /// Path where the error occurred.
