@@ -5,7 +5,7 @@ mod impl_tree;
 pub use error::*;
 
 use crate::{Node, NodeContent};
-use std::fmt::{Debug, Display};
+use std::fmt::Display;
 
 /// Applying [`FileSystemTree`](crate::FileSystemTree) to the filesystem.
 ///
@@ -18,9 +18,9 @@ where
     Error: Display,
 {
     /// Build target.
-    type BorrowedPath: Debug + ToOwned<Owned = Self::OwnedPath> + ?Sized;
+    type BorrowedPath: ToOwned<Owned = Self::OwnedPath> + ?Sized;
     /// Locations of the items in the filesystem.
-    type OwnedPath: Debug + AsRef<Self::BorrowedPath>;
+    type OwnedPath: AsRef<Self::BorrowedPath>;
     /// Add prefix to the root of the tree.
     fn join(prefix: &Self::BorrowedPath, name: &Name) -> Self::OwnedPath;
     /// Write content to a file.
