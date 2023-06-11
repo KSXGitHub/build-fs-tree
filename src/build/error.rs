@@ -2,7 +2,7 @@ use derive_more::{Display, Error};
 use std::fmt::{self, Debug, Display, Formatter};
 
 /// Error caused by [`Build::build`](crate::Build::build).
-#[derive(Debug, Display, Clone, Copy, PartialEq, Eq, Error)]
+#[derive(Debug, Display, Error)]
 #[display(fmt = "{operation} {path:?}: {error}")]
 #[display(bound = "Path: Debug, Error: Display")]
 pub struct BuildError<Path, Error> {
