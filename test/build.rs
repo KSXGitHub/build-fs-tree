@@ -161,7 +161,7 @@ fn mergeable_build_ensure_dir_to_write_file() {
             "bar/baz" => file!("d/e/f/bar/baz")
         }
     })
-    .build(&temp)
+    .build(temp.as_path())
     .expect("build filesystem tree");
     assert_file!(temp.join("a").join("b").join("c"), "a/b/c");
     assert_file!(temp.join("d").join("e").join("f").join("foo"), "d/e/f/foo");
