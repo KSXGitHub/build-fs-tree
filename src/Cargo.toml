@@ -53,10 +53,10 @@ cli = ["clap/derive", "clap-utilities"]
 cli-completions = ["cli"]
 
 [dependencies]
-derive_more = { version = "^1.0.0", features = ["as_ref", "deref", "deref_mut", "display", "error", "from", "index", "into", "try_into"] }
-pipe-trait = "^0.4.0"
-serde_yaml = "^0.9.21"
-text-block-macros = "^0.1.1"
-clap = { version = "^4.0.32", optional = true }
-clap-utilities = { version = "^0.2.0", optional = true }
-serde = { version = "^1.0.159", features = ["derive"] }
+clap = { workspace = true, optional = true }
+clap-utilities = { workspace = true, optional = true }
+derive_more.workspace = true
+pipe-trait.workspace = true
+serde_yaml.workspace = true
+serde.workspace = true
+text-block-macros.workspace = true
