@@ -15,6 +15,8 @@ cli-completions = ["build-fs-tree/cli-completions"]
 
 [dependencies]
 pipe-trait = "^0.4.0"
+cargo_toml = "^0.20.4"
+semver = "^1.0.23"
 maplit = "^1.0.2"
 text-block-macros = "^0.1.1"
 serde_yaml = "^0.9.21"

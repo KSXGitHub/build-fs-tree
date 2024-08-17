@@ -189,6 +189,8 @@ mod macros;
 #[cfg(test)]
 mod program;
 #[cfg(test)]
+mod rust_version;
+#[cfg(test)]
 mod tree;
 #[cfg(test)]
 mod yaml;
