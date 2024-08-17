@@ -7,6 +7,7 @@ use maplit::btreemap;
 use pipe_trait::Pipe;
 use pretty_assertions::assert_eq;
 use rand::{distributions::Alphanumeric, thread_rng, Rng};
+use semver::Version;
 use std::{
     collections,
     env::temp_dir,
@@ -16,6 +17,7 @@ use std::{
     path::{Path, PathBuf},
     process::Command,
     str,
+    sync::LazyLock,
 };
 use text_block_macros::text_block_fnl;
 
@@ -184,7 +186,8 @@ pub fn test_sample_tree(root: &Path) {
     );
 }
 
-pub fn workspace_manifest() -> PathBuf {
+/// Path to the `Cargo.toml` file at the root of the repo
+pub static WORKSPACE_MANIFEST: LazyLock<PathBuf> = LazyLock::new(|| {
     env!("CARGO")
         .pipe(Command::new)
         .with_arg("locate-project")
@@ -197,19 +200,24 @@ pub fn workspace_manifest() -> PathBuf {
         .expect("convert stdout to UTF-8")
         .trim()
         .pipe(PathBuf::from)
-}
+});
 
-pub fn rust_toolchain() -> String {
-    workspace_manifest()
+/// Content of the `rust-toolchain` file
+pub static RUST_TOOLCHAIN: LazyLock<Version> = LazyLock::new(|| {
+    WORKSPACE_MANIFEST
         .parent()
         .expect("get workspace dir")
         .join("rust-toolchain")
         .pipe(read_to_string)
         .expect("read rust-toolchain")
-}
+        .trim()
+        .pipe(Version::parse)
+        .expect("parse rust-toolchain as semver")
+});
 
-pub fn rust_version() -> String {
-    workspace_manifest()
+/// Minimal supported rust version as defined by `src/Cargo.toml`
+pub static RUST_VERSION: LazyLock<String> = LazyLock::new(|| {
+    WORKSPACE_MANIFEST
         .parent()
         .expect("get workspace dir")
         .join("src")
@@ -223,7 +231,7 @@ pub fn rust_version() -> String {
         .get()
         .expect("read rust_version as string")
         .to_string()
-}
+});
 
 #[cfg(test)]
 mod build;

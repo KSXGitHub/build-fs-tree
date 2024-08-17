@@ -1,5 +1,5 @@
 #![cfg(feature = "cli")]
-use crate::{test_sample_tree, workspace_manifest, Temp, SAMPLE_YAML};
+use crate::{test_sample_tree, Temp, SAMPLE_YAML, WORKSPACE_MANIFEST};
 use command_extra::CommandExtra;
 use pipe_trait::Pipe;
 use pretty_assertions::assert_eq;
@@ -22,7 +22,7 @@ fn run_main_subcommand(
     target: &'static str,
     input: &'static str,
 ) -> (bool, Option<i32>, String, String) {
-    let mut child = workspace_manifest()
+    let mut child = WORKSPACE_MANIFEST
         .parent()
         .expect("get workspace dir")
         .join("target")
