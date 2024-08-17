@@ -1,10 +1,10 @@
 use derive_more::{Display, Error};
-use std::fmt::{self, Debug, Display, Formatter};
+use std::fmt::{self, Debug, Formatter};
 
 /// Error caused by [`Build::build`](crate::Build::build).
 #[derive(Debug, Display, Error)]
-#[display(fmt = "{operation} {path:?}: {error}")]
-#[display(bound = "Path: Debug, Error: Display")]
+#[display("{operation} {path:?}: {error}")]
+#[display(bound(Path: Debug, Error: Display))]
 pub struct BuildError<Path, Error> {
     /// Operation that caused the error.
     pub operation: FailedOperation,
@@ -34,7 +34,7 @@ impl FailedOperation {
     }
 }
 
-impl Display for FailedOperation {
+impl fmt::Display for FailedOperation {
     fn fmt(&self, formatter: &mut Formatter<'_>) -> Result<(), fmt::Error> {
         write!(formatter, "{}", self.name())
     }

@@ -52,7 +52,7 @@ cli = ["clap/derive", "clap-utilities"]
 cli-completions = ["cli"]
 
 [dependencies]
-derive_more = "^0.99.17"
+derive_more = { version = "1.0", features = ["as_ref", "deref", "deref_mut", "display", "error", "from", "index", "into", "try_into"] }
 pipe-trait = "^0.4.0"
 serde_yaml = "^0.9.21"
 text-block-macros = "^0.1.1"
