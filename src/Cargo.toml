@@ -2,6 +2,7 @@
 name = "build-fs-tree"
 description = "Generate a filesystem tree from a macro or a YAML tree"
 version = "0.6.0"
+rust-version = "1.80"
 authors = ["khai96_ <hvksmr1996@gmail.com>"]
 edition = "2021"
 build = false
@@ -52,7 +53,7 @@ cli = ["clap/derive", "clap-utilities"]
 cli-completions = ["cli"]
 
 [dependencies]
-derive_more = "^0.99.17"
+derive_more = { version = "^1.0.0", features = ["as_ref", "deref", "deref_mut", "display", "error", "from", "index", "into", "try_into"] }
 pipe-trait = "^0.4.0"
 serde_yaml = "^0.9.21"
 text-block-macros = "^0.1.1"

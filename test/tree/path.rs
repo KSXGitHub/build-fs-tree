@@ -1,4 +1,3 @@
-#![cfg(test)]
 use crate::sample_tree;
 use build_fs_tree::FileSystemTree;
 use build_fs_tree::{dir, file};

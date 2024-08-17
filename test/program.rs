@@ -1,4 +1,3 @@
-#![cfg(test)]
 #![cfg(feature = "cli")]
 use crate::{test_sample_tree, Temp, SAMPLE_YAML};
 use command_extra::CommandExtra;
