@@ -1,4 +1,3 @@
-#![cfg(test)]
 use crate::{sample_tree, SAMPLE_YAML};
 use build_fs_tree::{FileSystemTree, MergeableFileSystemTree};
 use pipe_trait::Pipe;

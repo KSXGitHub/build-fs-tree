@@ -1,4 +1,3 @@
-#![cfg(test)]
 use crate::{assert_dir, assert_file, create_temp_dir, sample_tree, string_set, test_sample_tree};
 use build_fs_tree::{dir, file, Build, MergeableFileSystemTree};
 use pipe_trait::Pipe;

@@ -1,4 +1,3 @@
-#![cfg(test)]
 #![no_implicit_prelude]
 
 use crate::sample_tree;
