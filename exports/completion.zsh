@@ -15,10 +15,10 @@ _build-fs-tree() {
 
     local context curcontext="$curcontext" state line
     _arguments "${_arguments_options[@]}" \
-'-h[Print help information (use `--help` for more detail)]' \
-'--help[Print help information (use `--help` for more detail)]' \
-'-V[Print version information]' \
-'--version[Print version information]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
 ":: :_build-fs-tree_commands" \
 "*::: :->build-fs-tree" \
 && ret=0
@@ -30,15 +30,15 @@ _build-fs-tree() {
         case $line[1] in
             (create)
 _arguments "${_arguments_options[@]}" \
-'-h[Print help information (use `--help` for more detail)]' \
-'--help[Print help information (use `--help` for more detail)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 ':TARGET:_files' \
 && ret=0
 ;;
 (populate)
 _arguments "${_arguments_options[@]}" \
-'-h[Print help information (use `--help` for more detail)]' \
-'--help[Print help information (use `--help` for more detail)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 ':TARGET:_files' \
 && ret=0
 ;;
