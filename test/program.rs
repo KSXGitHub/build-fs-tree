@@ -1,11 +1,10 @@
 #![cfg(feature = "cli")]
-use crate::{test_sample_tree, Temp, SAMPLE_YAML};
+use crate::{test_sample_tree, workspace_manifest, Temp, SAMPLE_YAML};
 use command_extra::CommandExtra;
 use pipe_trait::Pipe;
 use pretty_assertions::assert_eq;
 use std::{
     io::Write,
-    path::PathBuf,
     process::{Command, Output, Stdio},
 };
 
@@ -23,10 +22,9 @@ fn run_main_subcommand(
     target: &'static str,
     input: &'static str,
 ) -> (bool, Option<i32>, String, String) {
-    let mut child = env!("CARGO_MANIFEST_DIR")
-        .pipe(PathBuf::from)
+    let mut child = workspace_manifest()
         .parent()
-        .expect("parent of $CARGO_MANIFEST_DIR")
+        .expect("get workspace dir")
         .join("target")
         .join(TARGET_DIR)
         .join("build-fs-tree")

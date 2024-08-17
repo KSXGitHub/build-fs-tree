@@ -1,5 +1,7 @@
 #![deny(warnings)]
 use build_fs_tree::*;
+use cargo_toml::Manifest;
+use command_extra::CommandExtra;
 use derive_more::{AsRef, Deref};
 use maplit::btreemap;
 use pipe_trait::Pipe;
@@ -12,6 +14,8 @@ use std::{
     fs::{create_dir, read_dir, read_to_string, remove_dir_all},
     io::Error,
     path::{Path, PathBuf},
+    process::Command,
+    str,
 };
 use text_block_macros::text_block_fnl;
 
@@ -178,6 +182,47 @@ pub fn test_sample_tree(root: &Path) {
         root.join("b").join("foo").join("bar"),
         "content of b/foo/bar",
     );
+}
+
+pub fn workspace_manifest() -> PathBuf {
+    env!("CARGO")
+        .pipe(Command::new)
+        .with_arg("locate-project")
+        .with_arg("--workspace")
+        .with_arg("--message-format=plain")
+        .output()
+        .expect("cargo locate-project")
+        .stdout
+        .pipe_as_ref(str::from_utf8)
+        .expect("convert stdout to UTF-8")
+        .trim()
+        .pipe(PathBuf::from)
+}
+
+pub fn rust_toolchain() -> String {
+    workspace_manifest()
+        .parent()
+        .expect("get workspace dir")
+        .join("rust-toolchain")
+        .pipe(read_to_string)
+        .expect("read rust-toolchain")
+}
+
+pub fn rust_version() -> String {
+    workspace_manifest()
+        .parent()
+        .expect("get workspace dir")
+        .join("src")
+        .join("Cargo.toml")
+        .pipe(Manifest::from_path)
+        .expect("load src/Cargo.toml")
+        .package
+        .expect("read package")
+        .rust_version
+        .expect("read rust_version")
+        .get()
+        .expect("read rust_version as string")
+        .to_string()
 }
 
 #[cfg(test)]
