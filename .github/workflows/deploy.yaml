@@ -70,7 +70,7 @@ jobs:
         run: strip --strip-all target/${{ matrix.target }}/release/build-fs-tree
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: build-fs-tree-${{ matrix.target }}
           path: target/${{ matrix.target }}/release/build-fs-tree
@@ -103,7 +103,7 @@ jobs:
         run: strip target/${{ matrix.target }}/release/build-fs-tree
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: build-fs-tree-${{ matrix.target }}
           path: target/${{ matrix.target }}/release/build-fs-tree
@@ -134,7 +134,7 @@ jobs:
         run: cargo build --features=cli --bin=build-fs-tree --target=${{ matrix.target }} --release
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: build-fs-tree-${{ matrix.target }}
           path: target/${{ matrix.target }}/release/build-fs-tree.exe
@@ -326,7 +326,7 @@ jobs:
         run: ./ci/github-actions/create-checksums.sh
 
       - name: Upload as artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: checksums
           path: sha*sum.txt
