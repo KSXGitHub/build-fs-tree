@@ -6,19 +6,19 @@ members = [
 ]
 
 [workspace.dependencies]
-cargo_toml = "^0.20.4"
+cargo_toml = "^0.22.3"
 clap = "^4.5.16"
 clap-utilities = "^0.2.0"
 command-extra = "^1.0.0"
 derive_more = { version = "^2.0.1", features = ["as_ref", "deref", "deref_mut", "display", "error", "from", "index", "into", "try_into"] }
 maplit = "^1.0.2"
 pipe-trait = "^0.4.0"
-pretty_assertions = "^1.4.0"
+pretty_assertions = "^1.4.1"
 rand = "^0.8.5"
-semver = "^1.0.23"
+semver = "^1.0.27"
 serde = { version = "^1.0.208", features = ["derive"] }
 serde_yaml = "^0.9.33"
-text-block-macros = "^0.1.1"
+text-block-macros = "^0.2.0"
 
 [profile.release]
 opt-level = "s"
