@@ -14,7 +14,7 @@ derive_more = { version = "^2.0.1", features = ["as_ref", "deref", "deref_mut", 
 maplit = "^1.0.2"
 pipe-trait = "^0.4.0"
 pretty_assertions = "^1.4.1"
-rand = "^0.8.5"
+rand = "^0.9.2"
 semver = "^1.0.27"
 serde = { version = "^1.0.208", features = ["derive"] }
 serde_yaml = "^0.9.33"

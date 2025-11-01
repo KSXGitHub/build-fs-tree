@@ -6,7 +6,7 @@ use derive_more::{AsRef, Deref};
 use maplit::btreemap;
 use pipe_trait::Pipe;
 use pretty_assertions::assert_eq;
-use rand::{distributions::Alphanumeric, thread_rng, Rng};
+use rand::{distr::Alphanumeric, rng, Rng};
 use semver::Version;
 use std::{
     collections,
@@ -32,7 +32,7 @@ pub struct Temp(PathBuf);
 impl Temp {
     /// Create a temporary directory.
     pub fn new_dir() -> Result<Self, Error> {
-        let path = thread_rng()
+        let path = rng()
             .sample_iter(&Alphanumeric)
             .take(15)
             .map(char::from)
