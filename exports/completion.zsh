@@ -14,7 +14,7 @@ _build-fs-tree() {
     fi
 
     local context curcontext="$curcontext" state line
-    _arguments "${_arguments_options[@]}" \
+    _arguments "${_arguments_options[@]}" : \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 '-V[Print version]' \
@@ -29,21 +29,21 @@ _build-fs-tree() {
         curcontext="${curcontext%:*:*}:build-fs-tree-command-$line[1]:"
         case $line[1] in
             (create)
-_arguments "${_arguments_options[@]}" \
+_arguments "${_arguments_options[@]}" : \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':TARGET:_files' \
 && ret=0
 ;;
 (populate)
-_arguments "${_arguments_options[@]}" \
+_arguments "${_arguments_options[@]}" : \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 ':TARGET:_files' \
 && ret=0
 ;;
 (help)
-_arguments "${_arguments_options[@]}" \
+_arguments "${_arguments_options[@]}" : \
 ":: :_build-fs-tree__help_commands" \
 "*::: :->help" \
 && ret=0
@@ -55,15 +55,15 @@ _arguments "${_arguments_options[@]}" \
         curcontext="${curcontext%:*:*}:build-fs-tree-help-command-$line[1]:"
         case $line[1] in
             (create)
-_arguments "${_arguments_options[@]}" \
+_arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (populate)
-_arguments "${_arguments_options[@]}" \
+_arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (help)
-_arguments "${_arguments_options[@]}" \
+_arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
         esac
@@ -89,11 +89,6 @@ _build-fs-tree__create_commands() {
     local commands; commands=()
     _describe -t commands 'build-fs-tree create commands' commands "$@"
 }
-(( $+functions[_build-fs-tree__help__create_commands] )) ||
-_build-fs-tree__help__create_commands() {
-    local commands; commands=()
-    _describe -t commands 'build-fs-tree help create commands' commands "$@"
-}
 (( $+functions[_build-fs-tree__help_commands] )) ||
 _build-fs-tree__help_commands() {
     local commands; commands=(
@@ -102,6 +97,11 @@ _build-fs-tree__help_commands() {
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'build-fs-tree help commands' commands "$@"
+}
+(( $+functions[_build-fs-tree__help__create_commands] )) ||
+_build-fs-tree__help__create_commands() {
+    local commands; commands=()
+    _describe -t commands 'build-fs-tree help create commands' commands "$@"
 }
 (( $+functions[_build-fs-tree__help__help_commands] )) ||
 _build-fs-tree__help__help_commands() {
@@ -119,4 +119,8 @@ _build-fs-tree__populate_commands() {
     _describe -t commands 'build-fs-tree populate commands' commands "$@"
 }
 
-_build-fs-tree "$@"
+if [ "$funcstack[1]" = "_build-fs-tree" ]; then
+    _build-fs-tree "$@"
+else
+    compdef _build-fs-tree build-fs-tree
+fi
