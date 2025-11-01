@@ -8,7 +8,7 @@ members = [
 [workspace.dependencies]
 cargo_toml = "^0.22.3"
 clap = "^4.5.51"
-clap-utilities = "^0.2.0"
+clap-utilities = "^0.3.0"
 command-extra = "^1.0.0"
 derive_more = { version = "^2.0.1", features = ["as_ref", "deref", "deref_mut", "display", "error", "from", "index", "into", "try_into"] }
 maplit = "^1.0.2"
