@@ -36,12 +36,8 @@ jobs:
             ${{ github.job }}-${{ runner.os }}-${{ hashFiles('rust-toolchain') }}-${{ hashFiles('**/Cargo.lock') }}
             ${{ github.job }}-${{ runner.os }}-${{ hashFiles('rust-toolchain') }}-
 
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          components: rustfmt,clippy
-          override: 'true'
-          default: 'true'
+      - name: Install Rust
+        run: ./ci/github-actions/install-rust.sh
 
       - name: Fmt
         run: cargo fmt -- --check

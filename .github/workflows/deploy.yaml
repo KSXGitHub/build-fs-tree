@@ -22,12 +22,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          components: clippy, rustfmt
-          override: 'true'
-          default: 'true'
+      - name: Install Rust
+        run: ./ci/github-actions/install-rust.sh
 
       - name: Test
         env:
@@ -56,12 +52,11 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions-rs/toolchain@v1.0.6
-        with:
-          profile: minimal
-          target: ${{ matrix.target }}
-          override: 'true'
-          default: 'true'
+      - name: Install Rust
+        run: ./ci/github-actions/install-rust.sh
+
+      - name: Add target
+        run: rustup target add ${{ matrix.target }}
 
       - name: Build
         run: cargo build --features=cli --bin=build-fs-tree --target=${{ matrix.target }} --release
@@ -89,12 +84,11 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions-rs/toolchain@v1.0.6
-        with:
-          profile: minimal
-          target: ${{ matrix.target }}
-          override: 'true'
-          default: 'true'
+      - name: Install Rust
+        run: ./ci/github-actions/install-rust.sh
+
+      - name: Add target
+        run: rustup target add ${{ matrix.target }}
 
       - name: Build
         run: cargo build --features=cli --bin=build-fs-tree --target=${{ matrix.target }} --release
@@ -123,12 +117,11 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions-rs/toolchain@v1.0.6
-        with:
-          profile: minimal
-          target: ${{ matrix.target }}
-          override: 'true'
-          default: 'true'
+      - name: Install Rust
+        run: ./ci/github-actions/install-rust.sh
+
+      - name: Add target
+        run: rustup target add ${{ matrix.target }}
 
       - name: Build
         run: cargo build --features=cli --bin=build-fs-tree --target=${{ matrix.target }} --release
@@ -431,11 +424,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions-rs/toolchain@v1.0.6
-        with:
-          profile: minimal
-          override: 'true'
-          default: 'true'
+      - name: Install Rust
+        run: ./ci/github-actions/install-rust.sh
 
       - name: Login
         run: cargo login ${{ secrets.CRATE_AUTH_TOKEN }}
