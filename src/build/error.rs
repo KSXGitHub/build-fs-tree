@@ -1,5 +1,5 @@
 use derive_more::{Display, Error};
-use std::fmt::{self, Debug, Formatter};
+use std::fmt::{self, Debug, Display, Formatter};
 
 /// Error caused by [`Build::build`](crate::Build::build).
 #[derive(Debug, Display, Error)]

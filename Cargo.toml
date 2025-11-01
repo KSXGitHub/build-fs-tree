@@ -10,7 +10,7 @@ cargo_toml = "^0.20.4"
 clap = "^4.5.16"
 clap-utilities = "^0.2.0"
 command-extra = "^1.0.0"
-derive_more = { version = "^1.0.0", features = ["as_ref", "deref", "deref_mut", "display", "error", "from", "index", "into", "try_into"] }
+derive_more = { version = "^2.0.1", features = ["as_ref", "deref", "deref_mut", "display", "error", "from", "index", "into", "try_into"] }
 maplit = "^1.0.2"
 pipe-trait = "^0.4.0"
 pretty_assertions = "^1.4.0"
