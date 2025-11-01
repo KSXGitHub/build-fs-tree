@@ -23,6 +23,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Install Rust
+        shell: bash
         run: ./ci/github-actions/install-rust.sh
 
       - name: Test
@@ -53,6 +54,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Install Rust
+        shell: bash
         run: ./ci/github-actions/install-rust.sh
 
       - name: Add target
@@ -85,6 +87,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Install Rust
+        shell: bash
         run: ./ci/github-actions/install-rust.sh
 
       - name: Add target
@@ -118,6 +121,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Install Rust
+        shell: bash
         run: ./ci/github-actions/install-rust.sh
 
       - name: Add target
@@ -425,6 +429,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Install Rust
+        shell: bash
         run: ./ci/github-actions/install-rust.sh
 
       - name: Login

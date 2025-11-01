@@ -37,6 +37,7 @@ jobs:
             ${{ github.job }}-${{ runner.os }}-${{ hashFiles('rust-toolchain') }}-
 
       - name: Install Rust
+        shell: bash
         run: ./ci/github-actions/install-rust.sh
 
       - name: Fmt
