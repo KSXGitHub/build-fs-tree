@@ -150,6 +150,7 @@ fn mergeable_build_conflict_dir_on_file() {
     );
     assert_eq!(actual_error, expected_error);
 }
+
 #[test]
 fn mergeable_build_ensure_dir_to_write_file() {
     let temp = create_temp_dir();
