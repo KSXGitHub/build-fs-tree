@@ -20,7 +20,7 @@ jobs:
           - macos-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install Rust
         shell: bash
@@ -51,7 +51,7 @@ jobs:
           - x86_64-unknown-linux-musl
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install Rust
         shell: bash
@@ -84,7 +84,7 @@ jobs:
           - x86_64-apple-darwin
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install Rust
         shell: bash
@@ -118,7 +118,7 @@ jobs:
           - x86_64-pc-windows-msvc
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install Rust
         shell: bash
@@ -155,7 +155,7 @@ jobs:
       release_tag: ${{ steps.release_type.outputs.release_tag }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install APT packages
         run: sudo apt install -y python3 python3-toml
@@ -188,7 +188,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Upload Tab-Completion file for Bash
         uses: actions/upload-release-asset@v1.0.2
@@ -265,7 +265,7 @@ jobs:
           - x86_64-apple-darwin
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Download artifact
         uses: actions/download-artifact@v6.0.0
@@ -309,7 +309,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Download all artifacts
         uses: actions/download-artifact@v6.0.0
@@ -378,7 +378,7 @@ jobs:
           - x86_64-unknown-linux-gnu
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Download checksums
         uses: actions/download-artifact@v6.0.0
@@ -426,7 +426,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install Rust
         shell: bash
