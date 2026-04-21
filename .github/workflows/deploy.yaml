@@ -393,7 +393,7 @@ jobs:
         run: ./ci/github-actions/generate-pkgbuild.py3
 
       - name: Publish build-fs-tree to the AUR
-        uses: KSXGitHub/github-actions-deploy-aur@v4.1.2
+        uses: KSXGitHub/github-actions-deploy-aur@v4.1.3
         with:
           pkgname: build-fs-tree
           pkgbuild: ./pkgbuild/build-fs-tree/PKGBUILD
@@ -404,7 +404,7 @@ jobs:
           force_push: 'true'
 
       - name: Publish build-fs-tree-bin to the AUR
-        uses: KSXGitHub/github-actions-deploy-aur@v4.1.2
+        uses: KSXGitHub/github-actions-deploy-aur@v4.1.3
         with:
           pkgname: build-fs-tree-bin
           pkgbuild: ./pkgbuild/build-fs-tree-bin/PKGBUILD
