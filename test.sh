@@ -27,7 +27,7 @@ run_if() (
 
 unit() (
   eval run_if "${LINT:-true}" cargo clippy "$@" -- -D warnings
-  eval run_if "${DOC:-false}" env RUSTDOCFLAGS="'-D warnings'" cargo doc --document-private-items  "$@"
+  eval run_if "${DOC:-false}" env RUSTDOCFLAGS="'-D warnings'" cargo doc --no-deps --document-private-items  "$@"
   eval run_if "${BUILD:-true}" cargo build "${BUILD_FLAGS:-}" "$@"
   eval run_if "${TEST:-true}" cargo test "${TEST_FLAGS:-}" "$@"
 )
